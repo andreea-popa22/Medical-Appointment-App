@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="AppointmentId" />
           </Key>
-          <Property Name="AppointmentId" Type="int" Nullable="false" />
+          <Property Name="AppointmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="PatientId" Type="int" Nullable="false" />
@@ -19,7 +19,7 @@
           <Key>
             <PropertyRef Name="DoctorId" />
           </Key>
-          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="DoctorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Gender" Type="bit" />
@@ -31,7 +31,7 @@
           <Key>
             <PropertyRef Name="MedicalCenterId" />
           </Key>
-          <Property Name="MedicalCenterId" Type="int" Nullable="false" />
+          <Property Name="MedicalCenterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Contact" Type="varchar" MaxLength="50" />
@@ -40,7 +40,7 @@
           <Key>
             <PropertyRef Name="PatientId" />
           </Key>
-          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="PatientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Gender" Type="bit" />
@@ -109,7 +109,7 @@
           <Key>
             <PropertyRef Name="AppointmentId" />
           </Key>
-          <Property Name="AppointmentId" Type="Int32" Nullable="false" />
+          <Property Name="AppointmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PatientId" Type="Int32" Nullable="false" />
@@ -121,7 +121,7 @@
           <Key>
             <PropertyRef Name="DoctorId" />
           </Key>
-          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Gender" Type="Boolean" />
@@ -135,7 +135,7 @@
           <Key>
             <PropertyRef Name="MedicalCenterId" />
           </Key>
-          <Property Name="MedicalCenterId" Type="Int32" Nullable="false" />
+          <Property Name="MedicalCenterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -145,7 +145,7 @@
           <Key>
             <PropertyRef Name="PatientId" />
           </Key>
-          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Gender" Type="Boolean" />
