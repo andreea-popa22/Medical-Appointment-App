@@ -11,13 +11,12 @@ namespace Demo.Controllers
     public class AppointmentController : Controller
     {
         private popaadbEntities entities = new popaadbEntities();
-        // GET: Appointment
         public ActionResult Index()
         {
             return View(entities.Appointments.ToList());
         }
 
-        //Get: New Appointment
+        // NEW
         public ActionResult New()
         {
             Appointment appointment = new Appointment();
@@ -27,7 +26,6 @@ namespace Demo.Controllers
             return View(appointment);
         }
 
-        // POST: New Appointment
         [HttpGet]
         public ActionResult Create()
         {
@@ -42,6 +40,14 @@ namespace Demo.Controllers
             entities.SaveChanges();
             ViewBag.Message = "Appointment created successfully!";
             return View();
+        }
+
+        // SHOW
+        public ActionResult Show(int id)
+        {
+
+            var appointment = entities.Appointments.Find(id);
+            return View(appointment);
         }
 
         [NonAction]

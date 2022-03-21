@@ -42,7 +42,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AppointmentId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AppointmentId }) |
+            <a class="btn btn-info" href="/Appointment/Show/@item.AppointmentId">Details</a>
             @Html.ActionLink("Delete", "Delete", new { id=item.AppointmentId })
         </td>
     </tr>
