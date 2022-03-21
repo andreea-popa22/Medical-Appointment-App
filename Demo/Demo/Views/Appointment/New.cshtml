@@ -1,0 +1,65 @@
+﻿@model Demo.Models.Appointment
+
+<div class="container">
+    @using (Html.BeginForm(actionName: "New", controllerName: "Appointments"))
+    {
+        <div class="form-horizontal">
+            <div class="form-group">
+                <br />
+                <h4>Add new appointment</h4>
+                <br />
+            </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Date, new { type = "date" })<br />
+                    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Pacient</label>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.PatientId, new SelectList(Model.PatientsList, "Value", "Text"),
+                     "Select pacient", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PatientId, "", new { @class = "text-danger" })
+                </div>
+                <br />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Doctor</label>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.DoctorId, new SelectList(Model.DoctorsList, "Value", "Text"),
+                     "Select doctor", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.DoctorId, "", new { @class = "text-danger" })
+                </div>
+                <br />
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-sm btn-success" />
+                </div>
+            </div>
+
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</div>

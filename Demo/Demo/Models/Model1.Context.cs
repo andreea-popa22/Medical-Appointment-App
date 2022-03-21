@@ -12,7 +12,7 @@ namespace Demo.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class popaadbEntities : DbContext
     {
         public popaadbEntities()
@@ -29,5 +29,6 @@ namespace Demo.Models
         public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<MedicalCenter> MedicalCenters { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
+
     }
 }
