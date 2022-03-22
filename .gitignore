@@ -73,3 +73,5 @@ _[Ss]cripts
 *.nupkg
 *.ncrunchsolution
 *.dot[Cc]over
+
+./Demo/Demo/Views/Patient/PacientInfo.cshtml

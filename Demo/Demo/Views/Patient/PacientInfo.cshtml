@@ -1,0 +1,59 @@
+﻿@model Demo.Models.Patient
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default radius-div">
+                @Html.Partial("PatientInfo", "Patient")
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="col-md-8 font-sizer-mem" style="display: inline-block">
+                                <h4>Patient</h4>
+                                <hr />
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Name)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Surname)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Surname)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Gender)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Gender)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.BirthDate)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.BirthDate)
+                                    </dd>
+
+                                </dl>
+                            </div>
+                            <p>
+                                @Html.ActionLink("Edit", "Edit", new { id = Model.PatientId }) |
+                                @Html.ActionLink("Back to List", "Index")
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

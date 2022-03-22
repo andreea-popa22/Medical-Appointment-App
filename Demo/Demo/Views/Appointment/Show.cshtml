@@ -21,19 +21,21 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PatientId)
+            @Html.Label("Patient")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PatientId)
+            @Html.DisplayFor(model => model.Patient.Name) 
+            @Html.DisplayFor(model => model.Patient.Surname)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DoctorId)
+            @Html.Label("Doctor")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DoctorId)
+            @Html.DisplayFor(model => model.Doctor.Name)
+            @Html.DisplayFor(model => model.Doctor.Surname)
         </dd>
 
     </dl>
