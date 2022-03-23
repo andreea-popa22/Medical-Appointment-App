@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Demo.Models.Appointment>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Appointments";
 }
 
 <h2>Index</h2>
@@ -18,34 +18,43 @@
             @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PatientId)
+            @Html.Label("Patient")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DoctorId)
+            @Html.Label("Doctor")
+        </th>
+
+        <th>
+            @Html.Label("Medical Center")
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PatientId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DoctorId)
-        </td>
-        <td>
-            <a class="btn btn-primary" href="/Appointment/Edit/@item.AppointmentId">Edit</a>
-            <a class="btn btn-info" href="/Appointment/Show/@item.AppointmentId">Details</a>
-            <a class="btn btn-danger" href="/Appointment/Delete/@item.AppointmentId">Delete</a>
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Type)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Patient.Name)
+        @Html.DisplayFor(modelItem => item.Patient.Surname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Doctor.Name)
+        @Html.DisplayFor(modelItem => item.Doctor.Surname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Doctor.MedicalCenter.Name)
+    </td>
+    <td>
+        <a class="btn btn-primary" href="/Appointment/Edit/@item.AppointmentId">Edit</a>
+        <a class="btn btn-info" href="/Appointment/Show/@item.AppointmentId">Details</a>
+        <a class="btn btn-danger" href="/Appointment/Delete/@item.AppointmentId">Delete</a>
+    </td>
+</tr>
 }
 
 </table>
