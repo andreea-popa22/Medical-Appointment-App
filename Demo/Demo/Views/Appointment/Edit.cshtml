@@ -28,13 +28,13 @@
                     <br />
                     <br />
                     <label>Select pacient</label>
-                    @Html.DropDownListFor(m => m.PatientsList,
+                    @Html.DropDownListFor(m => m.PatientId,
                         new SelectList(Model.PatientsList, "Value", "Text"),
                         "Select patient", new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.PatientId, "", new { @class = "text-danger" })
                     <br /><br />
                     <label>Select doctor</label>
-                    @Html.DropDownListFor(m => m.DoctorsList,
+                    @Html.DropDownListFor(m => m.DoctorId,
                         new SelectList(Model.DoctorsList, "Value", "Text"),
                         "Select doctor", new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.DoctorId, "", new { @class = "text-danger" })
