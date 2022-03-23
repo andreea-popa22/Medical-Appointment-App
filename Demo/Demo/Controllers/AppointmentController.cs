@@ -44,6 +44,42 @@ namespace Demo.Controllers
             return View(appointment);
         }
 
+        // EDIT
+        public ActionResult Edit(int id)
+        {
+            var appointment = entities.Appointments.Find(id);
+            appointment.PatientsList = GetAllPatients();
+            appointment.DoctorsList = GetAllDoctors();
+            return View(appointment);
+        }
+
+        [HttpPut]
+        public ActionResult Edit(int id, Appointment appointment)
+        {
+            try
+            {
+                Appointment app = entities.Appointments.Find(id);
+                if (TryUpdateModel(app))
+                {
+                    app.Type = appointment.Type;
+                    app.PatientId = appointment.PatientId;
+                    app.DoctorId = appointment.PatientId;
+                    app.Patient = appointment.Patient;
+                    app.Doctor = appointment.Doctor;
+                    app.PatientsList = GetAllPatients();
+                    app.DoctorsList = GetAllDoctors();
+                    entities.SaveChanges();
+                    TempData["message"] = "Appointment edited!";
+                    return RedirectToAction("Index");
+                }
+                return View(appointment);
+            }
+            catch (Exception e)
+            {
+                return View(appointment);
+            }
+        }
+
         // DELETE
         [HttpDelete]
         public ActionResult Delete(int id)

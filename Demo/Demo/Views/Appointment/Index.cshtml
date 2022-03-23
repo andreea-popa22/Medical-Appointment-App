@@ -21,9 +21,9 @@
             @Html.Label("Doctor")
         </th>
 
-        <th>
+        @*<th>
             @Html.Label("Medical Center")
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -45,12 +45,12 @@
                 @Html.DisplayFor(modelItem => item.Doctor.Surname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Doctor.MedicalCenter.Name)
-            </td>
-            <td>
-                <a class="btn btn-primary" href="/Appointment/Edit/@item.AppointmentId">Edit</a>
-                <a class="btn btn-info" href="/Appointment/Show/@item.AppointmentId">Details</a>
-                <a class="btn btn-danger" href="/Appointment/Delete/@item.AppointmentId">Delete</a>
+                    <a class="btn btn-primary pull-left" href="/Appointment/Edit/@item.AppointmentId">Edit</a>
+                    <a class="btn btn-info pull-left" href="/Appointment/Show/@item.AppointmentId">Details</a>
+                    <form method="post" action="/Appointment/Delete/@item.AppointmentId">
+                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                        <button class="btn btn-danger pull-right" style="border: none; " type="submit">Delete</button>
+                    </form>
             </td>
         </tr>
     }

@@ -1,0 +1,53 @@
+﻿@model Demo.Models.Appointment
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 class="heading-font" style="margin-left:14rem; margin-bottom: 2rem;">Edit appointment</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default radius-div edit-div">
+
+                @using (Html.BeginForm(actionName: "Edit", controllerName: "Appointment"))
+                {
+                    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+                    @Html.HiddenFor(m => m.AppointmentId)
+
+                    @Html.Label("Type", "Type")
+                    <br />
+                    @Html.Editor("Type")
+                    <br />
+                    <br />
+                    @Html.Label("Date", "Date")
+                    <br />
+                    @Html.EditorFor(m => m.Date)
+                    @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
+                    <br />
+                    <br />
+                    <label>Select pacient</label>
+                    @Html.DropDownListFor(m => m.PatientsList,
+                        new SelectList(Model.PatientsList, "Value", "Text"),
+                        "Select patient", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PatientId, "", new { @class = "text-danger" })
+                    <br /><br />
+                    <label>Select doctor</label>
+                    @Html.DropDownListFor(m => m.DoctorsList,
+                        new SelectList(Model.DoctorsList, "Value", "Text"),
+                        "Select doctor", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.DoctorId, "", new { @class = "text-danger" })
+                    <br /><br />
+                    <button class="btn btn-sm btn-success" type="submit">Edit</button>
+                }
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-primary" href="/Appointment/Show/@Model.AppointmentId" style="margin-left: 27%;">Back to appointment</a>
+        </div>
+    </div>
+
+</div>
+
