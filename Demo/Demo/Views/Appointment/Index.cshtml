@@ -4,11 +4,8 @@
     ViewBag.Title = "Appointments";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "New", null, new { @class = "btn btn-success" })
-</p>
+<h2>Appointments</h2>
+<br />
 <table class="table">
     <tr>
         <th>
@@ -30,31 +27,35 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Type)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Date)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Patient.Name)
-        @Html.DisplayFor(modelItem => item.Patient.Surname)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Doctor.Name)
-        @Html.DisplayFor(modelItem => item.Doctor.Surname)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Doctor.MedicalCenter.Name)
-    </td>
-    <td>
-        <a class="btn btn-primary" href="/Appointment/Edit/@item.AppointmentId">Edit</a>
-        <a class="btn btn-info" href="/Appointment/Show/@item.AppointmentId">Details</a>
-        <a class="btn btn-danger" href="/Appointment/Delete/@item.AppointmentId">Delete</a>
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.Name)
+                @Html.DisplayFor(modelItem => item.Patient.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doctor.Name)
+                @Html.DisplayFor(modelItem => item.Doctor.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doctor.MedicalCenter.Name)
+            </td>
+            <td>
+                <a class="btn btn-primary" href="/Appointment/Edit/@item.AppointmentId">Edit</a>
+                <a class="btn btn-info" href="/Appointment/Show/@item.AppointmentId">Details</a>
+                <a class="btn btn-danger" href="/Appointment/Delete/@item.AppointmentId">Delete</a>
+            </td>
+        </tr>
+    }
 
 </table>
+<br />
+<a class="btn btn-success" href="/Appointment/New">Add appointment</a>
+<br />

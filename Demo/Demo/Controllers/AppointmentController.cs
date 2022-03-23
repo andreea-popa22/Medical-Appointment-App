@@ -16,30 +16,24 @@ namespace Demo.Controllers
             return View(entities.Appointments.ToList());
         }
 
+
         // NEW
+        
         public ActionResult New()
         {
             Appointment appointment = new Appointment();
             appointment.PatientsList = GetAllPatients();
             appointment.DoctorsList = GetAllDoctors();
-
             return View(appointment);
         }
 
-        [HttpGet]
-        public ActionResult Create()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public ActionResult Create(Appointment model)
+        public ActionResult New(Appointment appointment)
         {
-            var entities = new popaadbEntities();
-            entities.Appointments.Add(model);
+            entities.Appointments.Add(appointment);
             entities.SaveChanges();
             ViewBag.Message = "Appointment created successfully!";
-            return View();
+            return Redirect("/Appointment/Show/" + appointment.AppointmentId);
         }
 
         // SHOW
@@ -48,6 +42,17 @@ namespace Demo.Controllers
 
             var appointment = entities.Appointments.Find(id);
             return View(appointment);
+        }
+
+        // DELETE
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            Appointment appointment = entities.Appointments.Find(id);
+            entities.Appointments.Remove(appointment);
+            entities.SaveChanges();
+            TempData["message"] = "Appointment " + appointment.AppointmentId + " was successfully deleted!";
+            return RedirectToAction("Index");
         }
 
         [NonAction]
