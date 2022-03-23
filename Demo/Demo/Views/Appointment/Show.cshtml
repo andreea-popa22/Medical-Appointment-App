@@ -1,46 +1,69 @@
 ﻿@model Demo.Models.Appointment
 
 <div>
-    <h4>Appointment</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Type)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.Label("Patient")
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Patient.Name) 
-            @Html.DisplayFor(model => model.Patient.Surname)
-        </dd>
-
-        <dt>
-            @Html.Label("Doctor")
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Doctor.Name)
-            @Html.DisplayFor(model => model.Doctor.Surname)
-        </dd>
-
-    </dl>
+    <br />
+    <h3>Appointment Details</h3>
+    <br />
+    <table class="table">
+        <tr>
+            <td>
+                @Html.Label("Type")
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.Type)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Date")
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.Date)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Patient")
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.Patient.Name)
+                @Html.DisplayFor(model => model.Patient.Surname)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Doctor")
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.Doctor.Name)
+                @Html.DisplayFor(model => model.Doctor.Surname)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Medical Center")
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.Doctor.MedicalCenter.Name)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Medical Center Address")
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.Doctor.MedicalCenter.Address)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Medical Center Contact")
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.Doctor.MedicalCenter.Contact)
+            </th>
+        </tr>
+    </table>
+    <a class="btn btn-primary" href="/Appointment/Edit/@Model.AppointmentId">Edit</a>
+    <a class="btn btn-danger" href="/Appointment/Delete/@Model.AppointmentId">Delete</a>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AppointmentId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
