@@ -63,7 +63,7 @@ namespace Demo.Controllers
                 {
                     app.Type = appointment.Type;
                     app.PatientId = appointment.PatientId;
-                    app.DoctorId = appointment.PatientId;
+                    app.DoctorId = appointment.DoctorId;
                     app.Patient = appointment.Patient;
                     app.Doctor = appointment.Doctor;
                     app.PatientsList = GetAllPatients();
