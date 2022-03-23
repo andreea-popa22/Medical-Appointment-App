@@ -288,6 +288,9 @@
     <Content Include="Views\Appointment\Show.cshtml" />
     <Content Include="Views\Patient\Show.cshtml" />
     <Content Include="Views\Appointment\Edit.cshtml" />
+    <Content Include="Views\Patient\Index.cshtml" />
+    <Content Include="Views\Patient\Edit.cshtml" />
+    <Content Include="Views\Patient\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

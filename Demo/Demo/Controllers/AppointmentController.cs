@@ -18,7 +18,6 @@ namespace Demo.Controllers
 
 
         // NEW
-        
         public ActionResult New()
         {
             Appointment appointment = new Appointment();
@@ -91,6 +90,7 @@ namespace Demo.Controllers
             return RedirectToAction("Index");
         }
 
+        // Helper methods
         [NonAction]
         public IEnumerable<SelectListItem> GetAllPatients()
         {

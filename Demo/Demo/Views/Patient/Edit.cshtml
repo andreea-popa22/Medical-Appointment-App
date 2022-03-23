@@ -1,0 +1,48 @@
+﻿@model Demo.Models.Patient
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 class="heading-font" style="margin-left:14rem; margin-bottom: 2rem;">Edit Patient</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default radius-div edit-div">
+
+                @using (Html.BeginForm(actionName: "Edit", controllerName: "Patient"))
+                {
+                    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+                    @Html.HiddenFor(m => m.PatientId)
+
+                    @Html.Label("Name", "Name")
+                    <br />
+                    @Html.Editor("Name")
+                    <br />
+                    @Html.Label("Surname", "Surname")
+                    <br />
+                    @Html.Editor("Surname")
+                    <br />
+                    @Html.Label("Gender", "Gender")
+                    <br />
+                    @Html.EditorFor(m => m.Gender)
+                    @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+                    <br />
+                    @Html.Label("Date", "Date")
+                    <br />
+                    @Html.EditorFor(m => m.BirthDate)
+                    @Html.ValidationMessageFor(m => m.BirthDate, "", new { @class = "text-danger" })
+                    <br />
+                    <button class="btn btn-sm btn-success" type="submit">Edit</button>
+                    <br />
+                }
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-primary" href="/Patient/Show/@Model.PatientId" style="margin-left: 27%;">Back to patient details</a>
+        </div>
+    </div>
+
+</div>
