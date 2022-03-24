@@ -1,44 +1,46 @@
 ﻿@model Demo.Models.Patient
 
 <div>
-    <h4>Patient</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Surname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Surname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
-
-    </dl>
+    <br />
+    <h3>Patient Details</h3>
+    <br />
+    <table class="table">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Name)
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.Name)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Surname)
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.Surname)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Gender)
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.Gender)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.BirthDate)
+            </th>
+        </tr>
+    </table>
+    <p>
+        <a class="btn btn-default" href="/Patient/Index">Back to list</a>
+        <a class="btn btn-primary" href="/Patient/Edit/@Model.PatientId">Edit</a>
+        <a class="btn btn-danger" href="/Patient/Delete/@Model.PatientId">Delete</a>
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PatientId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

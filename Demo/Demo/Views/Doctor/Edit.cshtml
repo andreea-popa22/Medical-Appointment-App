@@ -1,0 +1,57 @@
+﻿@model Demo.Models.Doctor
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 class="heading-font" style="margin-left:14rem; margin-bottom: 2rem;">Edit Doctor</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default radius-div edit-div">
+
+                @using (Html.BeginForm(actionName: "Edit", controllerName: "Doctor"))
+                {
+                    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+                    @Html.HiddenFor(m => m.DoctorId)
+
+                    @Html.Label("Name", "Name")
+                    <br />
+                    @Html.Editor("Name")
+                    <br />
+                    @Html.Label("Surname", "Surname")
+                    <br />
+                    @Html.Editor("Surname")
+                    <br />
+                    @Html.Label("Gender", "Gender")
+                    <br />
+                    @Html.EditorFor(m => m.Gender)
+                    @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+                    <br />
+                    @Html.Label("Specialization", "Specialization")
+                    <br />
+                    @Html.Editor("Specialization")
+                    <br />
+                    @Html.Label("Experience", "Experience")
+                    <br />
+                    @Html.Editor("Experience")
+                    <br />
+                    <label>Select medical center</label>
+                    @Html.DropDownListFor(m => m.MedicalCenterId,
+                        new SelectList(Model.MedicalCentersList, "Value", "Text"),
+                        "Select medical center", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.MedicalCenterId, "", new { @class = "text-danger" })
+                    <br /><br />
+                    <button class="btn btn-sm btn-success" type="submit">Edit</button>
+                    <br />
+                }
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-primary" href="/Doctor/Show/@Model.DoctorId" style="margin-left: 27%;">Back to doctor details</a>
+        </div>
+    </div>
+
+</div>

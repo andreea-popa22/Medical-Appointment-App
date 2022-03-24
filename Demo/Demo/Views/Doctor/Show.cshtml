@@ -1,0 +1,60 @@
+﻿@model Demo.Models.Doctor
+
+<div>
+    <br />
+    <h3>Doctor Details</h3>
+    <br />
+    <table class="table">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Name)
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.Name)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Surname)
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.Surname)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Gender)
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.Gender)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Specialization)
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.Specialization)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Experience)
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.Experience)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Medical Center")
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.MedicalCenter.Name)
+            </th>
+        </tr>
+    </table>
+    <a class="btn btn-default" href="/Doctor/Index">Back to list</a>
+    <a class="btn btn-primary" href="/Doctor/Edit/@Model.DoctorId">Edit</a>
+    <a class="btn btn-danger" href="/Doctor/Delete/@Model.DoctorId">Delete</a>
+</div>
