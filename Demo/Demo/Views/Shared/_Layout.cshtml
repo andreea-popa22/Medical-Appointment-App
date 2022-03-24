@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - MedApp</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -19,7 +19,7 @@
                 </button>
                 @Html.ActionLink("MedApp", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-link">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Appointments", "Index", "Appointment")</li>
                     <li>@Html.ActionLink("Patients", "Index", "Patient")</li>
