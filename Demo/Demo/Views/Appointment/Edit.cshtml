@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-default radius-div edit-div">
-
+                <br />
                 @using (Html.BeginForm(actionName: "Edit", controllerName: "Appointment"))
                 {
                     @Html.HttpMethodOverride(HttpVerbs.Put)
@@ -32,20 +32,20 @@
                         new SelectList(Model.PatientsList, "Value", "Text"),
                         "Select patient", new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.PatientId, "", new { @class = "text-danger" })
-                    <br /><br />
+                    <br />
                     <label>Select doctor</label>
                     @Html.DropDownListFor(m => m.DoctorId,
                         new SelectList(Model.DoctorsList, "Value", "Text"),
                         "Select doctor", new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.DoctorId, "", new { @class = "text-danger" })
-                    <br /><br />
+                    <br />
                     <button class="btn btn-sm btn-success" type="submit">Edit</button>
                 }
-
+                <br />
             </div>
         </div>
         <div class="col-md-6">
-            <a class="btn btn-secondary" href="/Appointment/Show/@Model.AppointmentId" style="margin-left: 27%;">Back to appointment</a>
+            <a class="btn btn-default" href="/Appointment/Show/@Model.AppointmentId">Back to appointment</a>
         </div>
     </div>
 

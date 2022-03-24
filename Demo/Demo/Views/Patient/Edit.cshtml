@@ -9,7 +9,6 @@
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-default radius-div edit-div">
-
                 @using (Html.BeginForm(actionName: "Edit", controllerName: "Patient"))
                 {
                     @Html.HttpMethodOverride(HttpVerbs.Put)
@@ -33,15 +32,15 @@
                     <br />
                     @Html.EditorFor(m => m.BirthDate)
                     @Html.ValidationMessageFor(m => m.BirthDate, "", new { @class = "text-danger" })
-                    <br />
+                    <br /> <br />
                     <button class="btn btn-sm btn-success" type="submit">Edit</button>
                     <br />
                 }
-
+                <br />
             </div>
         </div>
         <div class="col-md-6">
-            <a class="btn btn-primary" href="/Patient/Show/@Model.PatientId" style="margin-left: 27%;">Back to patient details</a>
+            <a class="btn btn-default" href="/Patient/Show/@Model.PatientId">Back to patient details</a>
         </div>
     </div>
 
