@@ -39,20 +39,16 @@ textarea {
     font-size: 25px;
 }
 
-.my-footer {
-    background-color: #1A4D74;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    width: 100vw;
-    height: 4rem;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    text-align: center;
-    padding-top: 1rem;
-    margin-top: 20%;
-}
-
 .my-footer-container {
     height: 2rem;
+}
+
+#scroll-to-top {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-size: 25px;
 }

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - MedApp</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
@@ -31,9 +31,15 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </div>
+    <div class="my-footer-container">
+        <footer class="bg-light text-center text-lg-start">
+            <button class="pull-right" onclick="scrollFunction()" id="scroll-to-top" title="Go to top">&uarr;</button>
+            <div class="text-center p-3" style="background-color: #053957;">
+                <br />
+                <p class="nav-font" style="color:white;">&copy; @DateTime.Now.Year - MedApp Application</p>
+                <br />
+            </div>
         </footer>
     </div>
 
