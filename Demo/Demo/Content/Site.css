@@ -44,6 +44,7 @@ textarea {
 }
 
 #scroll-to-top {
+    display: none;
     background-color: transparent;
     background-repeat: no-repeat;
     border: none;
@@ -51,4 +52,9 @@ textarea {
     overflow: hidden;
     outline: none;
     font-size: 25px;
+}
+
+#scroll-to-top:hover {
+    background-color: #085a8a;
+    background-repeat:initial;
 }

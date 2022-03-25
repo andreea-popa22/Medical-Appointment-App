@@ -34,7 +34,7 @@
     </div>
     <div class="my-footer-container">
         <footer class="bg-light text-center text-lg-start">
-            <button class="pull-right" onclick="scrollFunction()" id="scroll-to-top" title="Go to top">&uarr;</button>
+            <button class="pull-right" onclick="toTopFunction()" id="scroll-to-top" title="Go to top">&uarr;</button>
             <div class="text-center p-3" style="background-color: #053957;">
                 <br />
                 <p class="nav-font" style="color:white;">&copy; @DateTime.Now.Year - MedApp Application</p>
@@ -46,5 +46,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="../../Scripts/Layout.js" language="javascript"></script>
 </body>
 </html>
