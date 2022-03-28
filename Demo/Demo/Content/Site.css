@@ -58,3 +58,19 @@ textarea {
     background-color: #085a8a;
     background-repeat:initial;
 }
+
+.white-active:link {
+    text-decoration: none;
+}
+
+.white-active:visited {
+    text-decoration: none;
+}
+
+.white-active:hover {
+    color: white;
+}
+
+.white-active:active {
+    color: white !important;
+}
