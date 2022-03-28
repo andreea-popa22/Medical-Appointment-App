@@ -12,6 +12,7 @@ namespace Demo.Controllers
         private popaadbEntities entities = new popaadbEntities();
         public ActionResult Index()
         {
+            ViewBag.Appointments = ListAppointments();
             ViewBag.Patients = ListPatients();
             return View();
         }
@@ -31,20 +32,27 @@ namespace Demo.Controllers
         }
 
         [NonAction]
-        public List<Demo.Models.Patient> ListPatients()
+        public List<Patient> ListPatients()
         {
-            var patientsList = new List<Demo.Models.Patient>();
             var patients = from p in entities.Patients
                            select p;
-            //foreach (var patient in patients)
-            //{
-            //    patientsList.Add(new Patient
-            //    {
-            //        Value = patient.PatientId.ToString(),
-            //        Text = patient.Name.ToString() + " " + patient.Surname.ToString()
-            //    });
-            //}
             return patients.ToList();
+        }
+
+        [NonAction]
+        public List<Appointment> ListAppointments()
+        {
+            var apps = from a in entities.Appointments
+                       select a;
+            return apps.ToList();
+        }
+
+        [NonAction]
+        public List<Doctor> ListDoctors()
+        {
+            var doctors = from d in entities.Doctors
+                       select d;
+            return doctors.ToList();
         }
     }
 }

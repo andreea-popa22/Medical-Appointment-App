@@ -29,6 +29,13 @@
     </div>
     <div class="col-md-6">
         <a href="/Appointment/Index" class="btn btn-primary">See appointments</a>
+        <br /><br />
+        @foreach (Demo.Models.Appointment app in ViewBag.Appointments)
+        {
+            <tr class="panel panel-default font-poppins">
+                @Html.Partial("ListAppointments", app)
+            </tr>
+        }
     </div>
     <div class="col-md-3">
         <a href="/Doctor/Index" class="btn btn-primary">See doctors</a>
