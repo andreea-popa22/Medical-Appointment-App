@@ -12,6 +12,7 @@ namespace Demo.Controllers
         private popaadbEntities entities = new popaadbEntities();
         public ActionResult Index()
         {
+            ViewBag.Doctors = ListDoctors();
             ViewBag.Appointments = ListAppointments();
             ViewBag.Patients = ListPatients();
             return View();
