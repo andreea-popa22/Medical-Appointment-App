@@ -44,6 +44,7 @@ textarea {
 }
 
 #scroll-to-top {
+    color: white;
     display: none;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -102,3 +103,4 @@ textarea {
     border-color: #1482D0;
     text-decoration: none;
 }
+
