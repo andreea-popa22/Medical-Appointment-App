@@ -1,51 +1,53 @@
 ﻿@{
     ViewBag.Title = "Dashboard";
 }
-
-@*<div class="jumbotron">
-        <h1>MedApp</h1>
-        <p class="lead">MedApp is a web application useful for medical appointments management.</p>
-        <p>
-            <a href="/Appointment/Index" class="btn btn-primary btn-lg">See appointments</a>
-            <a href="/Patient/Index" class="btn btn-primary btn-lg">See patients</a>
-            <a href="/Doctor/Index" class="btn btn-primary btn-lg">See doctors</a>
-        </p>
-
-        <div class="col-sm-5 col-height">
-            <img src="../Content/Images/medicine.png" alt="Working Team" width="300" height="200" style="margin-top: 4rem;">
-        </div>
-    </div>*@
 <br />
-<div class="row">
-    <div class="col-md-3">
-        <a href="/Patient/Index" class="btn btn-primary">See patients</a>
-        <br /> <br />
-        @foreach (Demo.Models.Patient patient in ViewBag.Patients)
-        {
-            <tr class="panel panel-default font-poppins">
-                @Html.Partial("ListPatients", patient)
-            </tr>
-        }
+<div class="container">
+    <div class="col-md-3 panel panel-default">
+        <div class="text-center">
+            <br/>
+            <a href="/Patient/Index" class="button-15">All patients &#8594;</a>
+        </div>
+        <div>
+            @foreach (Demo.Models.Patient patient in ViewBag.Patients)
+            {
+                <div class="font-poppins">
+                    @Html.Partial("ListPatients", patient)
+                </div>
+            }
+            <br/>
+        </div>
     </div>
-    <div class="col-md-6">
-        <a href="/Appointment/Index" class="btn btn-primary">See appointments</a>
-        <br /><br />
-        @foreach (Demo.Models.Appointment app in ViewBag.Appointments)
-        {
-            <tr class="panel panel-default font-poppins">
-                @Html.Partial("ListAppointments", app)
-            </tr>
-        }
+
+    <div class="col-md-6 panel panel-default">
+        <div class="text-center">
+            <br />
+            <a href="/Appointment/Index" class="button-15">All appointments &#8594;</a>
+        </div>
+        <div>
+            @foreach (Demo.Models.Appointment app in ViewBag.Appointments)
+            {
+                <div class="font-poppins">
+                    @Html.Partial("ListAppointments", app)
+                </div>
+            }
+        </div>
+        
     </div>
-    <div class="col-md-3">
-        <a href="/Doctor/Index" class="btn btn-primary">See doctors</a>
-        <br /><br />
-        @foreach (Demo.Models.Doctor doctor in ViewBag.Doctors)
-        {
-            <tr class="panel panel-default font-poppins">
-                @Html.Partial("ListDoctors", doctor)
-            </tr>
-        }
+
+    <div class="col-md-3 panel panel-default">
+        <div class="text-center">
+            <br />
+            <a href="/Doctor/Index" class="button-15">All doctors &#8594;</a>
+        </div>
+        <div>
+            @foreach (Demo.Models.Doctor doctor in ViewBag.Doctors)
+            {
+                <div class="font-poppins">
+                    @Html.Partial("ListDoctors", doctor)
+                </div>
+            }
+        </div>
     </div>
 </div>
 <div class="col-sm-5 col-height">
