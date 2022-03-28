@@ -1,17 +1,37 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Dashboard";
 }
 
-<div class="jumbotron">
-    <h1>MedApp</h1>
-    <p class="lead">MedApp is a web application useful for medical appointments management.</p>
-    <p>
-        <a href="/Appointment/Index" class="btn btn-primary btn-lg">See appointments</a>
-        <a href="/Patient/Index" class="btn btn-primary btn-lg">See patients</a>
-        <a href="/Doctor/Index" class="btn btn-primary btn-lg">See doctors</a>
-    </p>
+@*<div class="jumbotron">
+        <h1>MedApp</h1>
+        <p class="lead">MedApp is a web application useful for medical appointments management.</p>
+        <p>
+            <a href="/Appointment/Index" class="btn btn-primary btn-lg">See appointments</a>
+            <a href="/Patient/Index" class="btn btn-primary btn-lg">See patients</a>
+            <a href="/Doctor/Index" class="btn btn-primary btn-lg">See doctors</a>
+        </p>
 
-    <div class="col-sm-5 col-height">
-        <img src="../Content/Images/medicine.png" alt="Working Team" width="300" height="200" style="margin-top: 4rem;">
+        <div class="col-sm-5 col-height">
+            <img src="../Content/Images/medicine.png" alt="Working Team" width="300" height="200" style="margin-top: 4rem;">
+        </div>
+    </div>*@
+<br />
+<div class="row">
+    <div class="col-md-3">
+        <a href="/Patient/Index" class="btn btn-primary">See patients</a>
+        <br /> <br />
+        @foreach (Demo.Models.Patient patient in ViewBag.Patients)
+        {
+            <tr class="panel panel-default font-poppins">
+                @Html.Partial("ListPatients", patient)
+            </tr>
+        }
+    </div>
+    <div class="col-md-6">
+        <a href="/Appointment/Index" class="btn btn-primary">See appointments</a>
+    </div>
+    <div class="col-md-3">
+        <a href="/Doctor/Index" class="btn btn-primary">See doctors</a>
     </div>
 </div>
+<br />
