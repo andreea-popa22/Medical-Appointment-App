@@ -104,3 +104,8 @@ textarea {
     text-decoration: none;
 }
 
+.col-md-3, .col-md-6 {
+    height: 400px;
+    overflow-y: scroll;
+}
+
