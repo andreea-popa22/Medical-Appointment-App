@@ -96,12 +96,14 @@ textarea {
     -webkit-user-select: none;
     touch-action: manipulation;
     white-space: nowrap;
+    font-weight: bold;
 }
 
 .button-15:hover {
     background-image: linear-gradient(#51A9EE, #147BCD);
     border-color: #1482D0;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .col-md-3, .col-md-6 {
@@ -109,3 +111,18 @@ textarea {
     overflow-y: scroll;
 }
 
+.btn-info2 {
+    background-color: #6e56b0;
+    border-color: #533b96;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-info2:hover {
+    background-color: #6236a8;
+    color: white;
+}
+
+.btn-info {
+    font-weight: bold;
+}
