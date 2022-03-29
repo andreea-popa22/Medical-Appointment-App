@@ -50,11 +50,11 @@
                 @Html.DisplayFor(modelItem => item.MedicalCenter.Name)
             </td>
             <td>
-                <a class="btn btn-primary pull-left" href="/Doctor/Edit/@item.DoctorId">Edit</a>
-                <a class="btn btn-info pull-left" href="/Doctor/Show/@item.DoctorId">Details</a>
+                <a class="btn btn-primary pull-left" href="/Doctor/Edit/@item.DoctorId" style="margin-left:5px;">Edit</a>
+                <a class="btn btn-info pull-left" href="/Doctor/Show/@item.DoctorId" style="margin-left:5px;">Details</a>
                 <form method="post" action="/Doctor/Delete/@item.DoctorId">
                     @Html.HttpMethodOverride(HttpVerbs.Delete)
-                    <button class="btn btn-danger pull-right" style="border: none; " type="submit">Delete</button>
+                    <button class="btn btn-danger pull-left" style="margin-left:5px;" type="submit">Delete</button>
                 </form>
             </td>
         </tr>

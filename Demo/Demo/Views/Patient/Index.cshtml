@@ -38,11 +38,11 @@
                 @Html.DisplayFor(modelItem => item.BirthDate)
             </td>
             <td>
-                <a class="btn btn-primary pull-left" href="/Patient/Edit/@item.PatientId">Edit</a>
-                <a class="btn btn-info pull-left" href="/Patient/Show/@item.PatientId">Details</a>
+                <a class="btn btn-primary pull-left" href="/Patient/Edit/@item.PatientId" style="margin-left:5px;">Edit</a>
+                <a class="btn btn-info pull-left" href="/Patient/Show/@item.PatientId" style="margin-left:5px;">Details</a>
                 <form method="post" action="/Patient/Delete/@item.PatientId">
                     @Html.HttpMethodOverride(HttpVerbs.Delete)
-                    <button class="btn btn-danger pull-right" style="border: none; " type="submit">Delete</button>
+                    <button class="btn btn-danger pull-left" style="margin-left:5px;" type="submit">Delete</button>
                 </form>
             </td>
         </tr>
