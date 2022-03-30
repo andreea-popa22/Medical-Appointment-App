@@ -115,7 +115,7 @@ textarea {
     background-color: #6e56b0;
     border-color: #533b96;
     color: white;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .btn-info2:hover {
@@ -123,6 +123,6 @@ textarea {
     color: white;
 }
 
-.btn-info1 {
+.bold {
     font-weight: bold;
 }
