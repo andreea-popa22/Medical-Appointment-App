@@ -1,46 +1,73 @@
 ﻿@model Demo.Models.Patient
-
-<div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - MedApp</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" type="text/css" media="all" href="~/Content/site.css" />
+</head>
+<body>
+    <div>
+        <br />
+        <h3>Patient Details</h3>
+        <br />
+        <table class="table">
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Name)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.Name)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Surname)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.Surname)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.Gender)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.BirthDate)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.BirthDate)
+                </th>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <a class="btn btn-default" href="/Patient/Index">Back to list</a>
+                <a class="btn btn-primary" href="/Patient/Edit/@Model.PatientId">Edit</a>
+                <a class="btn btn-danger" href="/Patient/Delete/@Model.PatientId">Delete</a>
+                <br />
+                <img src="../../Content/Images/patient.jpg" alt="Take care" width="400" height="400" style="margin-left:45%;">
+            </div>
+            <div class="col-md-2 pull-right">
+                <label for="start-date">From:</label>
+                <input type="date" id="start-date" name="start-date">
+                <br />
+                <label for="end-date">To:</label>
+                <input type="date" id="end-date" name="end-date">
+                <br/> <br/>
+                <button class="btn btn-info2" onclick="findApptFunction()" id="find-appt">Find appointments</button>
+                <br /> <br />
+            </div>
+        </div>
+    </div>
     <br />
-    <h3>Patient Details</h3>
-    <br />
-    <table class="table">
-        <tr>
-            <td>
-                @Html.DisplayNameFor(model => model.Name)
-            </td>
-            <th>
-                @Html.DisplayFor(model => model.Name)
-            </th>
-        </tr>
-        <tr>
-            <td>
-                @Html.DisplayNameFor(model => model.Surname)
-            </td>
-            <th>
-                @Html.DisplayFor(model => model.Surname)
-            </th>
-        </tr>
-        <tr>
-            <td>
-                @Html.DisplayNameFor(model => model.Gender)
-            </td>
-            <th>
-                @Html.DisplayFor(model => model.Gender)
-            </th>
-        </tr>
-        <tr>
-            <td>
-                @Html.DisplayNameFor(model => model.BirthDate)
-            </td>
-            <th>
-                @Html.DisplayFor(model => model.BirthDate)
-            </th>
-        </tr>
-    </table>
-    <p>
-        <a class="btn btn-default" href="/Patient/Index">Back to list</a>
-        <a class="btn btn-primary" href="/Patient/Edit/@Model.PatientId">Edit</a>
-        <a class="btn btn-danger" href="/Patient/Delete/@Model.PatientId">Delete</a>
-    </p>
-</div>
+</body>
+</html>
