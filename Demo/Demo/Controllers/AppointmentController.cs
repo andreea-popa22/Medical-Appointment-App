@@ -1,7 +1,9 @@
 ﻿using Demo.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -90,13 +92,21 @@ namespace Demo.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Select(int patientId, DateTime startDate, DateTime endDate)
+        {
+            
+            return View(GetStoredProc(patientId, startDate, endDate));
+        }
+
+
+
         // Helper methods
         [NonAction]
         public IEnumerable<SelectListItem> GetAllPatients()
         {
             var patientsList = new List<SelectListItem>();
             var patients = from p in entities.Patients
-                        select p;
+                           select p;
             foreach (var patient in patients)
             {
                 patientsList.Add(new SelectListItem
@@ -113,7 +123,7 @@ namespace Demo.Controllers
         {
             var doctorsList = new List<SelectListItem>();
             var doctors = from d in entities.Doctors
-                           select d;
+                          select d;
             foreach (var doctor in doctors)
             {
                 doctorsList.Add(new SelectListItem
@@ -123,6 +133,47 @@ namespace Demo.Controllers
                 });
             }
             return doctorsList;
+        }
+
+        [NonAction]
+        public List<Appointment> GetStoredProc(int patientId, DateTime startDate, DateTime endDate)
+        {
+            var connString = new popaadbEntities().Database.Connection.ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "dbo.FindAppointmentsForPatient";
+                    cmd.Parameters.Add("@start_date", SqlDbType.Date).Value = startDate;
+                    cmd.Parameters.Add("@end_date", SqlDbType.Date).Value = endDate;
+                    cmd.Parameters.Add("@patient_id", SqlDbType.Int).Value = patientId;
+                    conn.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+
+                    conn.Close();
+                    DataTable dt = ds.Tables[0];
+                    List<Appointment> apps = new List<Appointment>();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        apps.Add(new Appointment
+                        {
+                            Type = row["Type"].ToString(),
+                            Date = Convert.ToDateTime(row["Date"].ToString()),
+                            PatientId = Convert.ToInt32(row["PatientId"].ToString()),
+                            DoctorId = Convert.ToInt32(row["DoctorId"].ToString())
+                        });
+                    }
+                    return apps;
+                }
+            }
+            List<Appointment> list = new List<Appointment>();
+            return list;
         }
     }
 }

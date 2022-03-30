@@ -62,12 +62,13 @@
                 <br />
                 <label for="end-date">To:</label>
                 <input type="date" id="end-date" name="end-date">
-                <br/> <br/>
-                <button class="btn btn-info2" onclick="findApptFunction()" id="find-appt">Find appointments</button>
+                <br /> <br />
+                <button class="btn btn-info2" onclick="findApptFunction(@Model.PatientId)" id="find-appt">Find appointments</button>
                 <br /> <br />
             </div>
         </div>
     </div>
     <br />
+    <script src="../../Scripts/FindAppt.js" language="javascript"></script>
 </body>
 </html>

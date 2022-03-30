@@ -241,6 +241,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\FindAppt.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -301,6 +302,7 @@
     <Content Include="Views\Shared\ListPatients.cshtml" />
     <Content Include="Views\Shared\ListAppointments.cshtml" />
     <Content Include="Views\Shared\ListDoctors.cshtml" />
+    <Content Include="Views\Appointment\Select.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
