@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ClosedXML.Excel;
+using System.IO;
 
 namespace Demo.Controllers
 {
@@ -97,6 +99,39 @@ namespace Demo.Controllers
             //return View();
             List<Appointment> list = GetStoredProc(patientId, startDate, endDate);
             return View(list);
+        }
+
+        [NonAction]
+        [HttpPost]
+        public ActionResult Export()
+        {
+            DataTable dt = new DataTable("Appointments");
+            dt.Columns.AddRange(new DataColumn[5] { new DataColumn("AppointmentId"),
+                                                    new DataColumn("Type"),
+                                                    new DataColumn("Date"),
+                                                    new DataColumn("Patient"),
+                                                    new DataColumn("Doctor") });
+
+            var appointments = from appointment in entities.Appointments
+                            select appointment;
+
+            foreach (var appointment in appointments)
+            {
+                dt.Rows.Add(appointment.AppointmentId, appointment.Type, appointment.Date, 
+                    appointment.Patient.Name + " " + appointment.Patient.Surname,
+                    appointment.Doctor.Name + " " + appointment.Doctor.Surname);
+            }
+
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(dt);
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    wb.SaveAs(stream);
+                    //RedirectToAction("Appointment/Index");
+                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Appointments.xlsx");
+                }
+            }
         }
 
 

@@ -7,3 +7,4 @@ This projects manages medical appointments for pacients. The process is intended
 Resources:
 - https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-cs
 - https://www.c-sharpcorner.com/article/crud-operation-in-asp-net-mvc2/
+- https://www.c-sharpcorner.com/article/how-to-export-data-in-excel-pdf-csv-word-json-xml-and-text-file/
