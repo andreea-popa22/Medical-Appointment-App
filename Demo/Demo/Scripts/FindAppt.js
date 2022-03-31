@@ -4,16 +4,19 @@
 function findApptFunction(patientId) {
     startDate = document.getElementById("start-date").value;
     endDate = document.getElementById("end-date").value;
-    debugger;
     console.log(findApptButton);
     console.log(startDate);
     console.log(endDate);
     $.ajax({
         type: "POST",
-        url: "../../Appointment/Select/",
-        data: { patientId: patientId, startDate: startDate, endDate: endDate},
+        url: "../../Appointment/Select",
+        data: { patientId: patientId, startDate: startDate, endDate: endDate },
+        //cache: false,
+        //dataType: "json",
+        //contentType: "application/json; charset=utf-8",
         success: function (data) {
-            alert('Data: ' + data);
+            console.log("success");
+            //window.location="../../Appointment/Select";
         },
         error: function (request, error) {
             alert("Request: " + JSON.stringify(request));

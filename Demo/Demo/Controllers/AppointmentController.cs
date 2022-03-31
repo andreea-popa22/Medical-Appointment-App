@@ -40,7 +40,6 @@ namespace Demo.Controllers
         // SHOW
         public ActionResult Show(int id)
         {
-
             var appointment = entities.Appointments.Find(id);
             return View(appointment);
         }
@@ -92,12 +91,13 @@ namespace Demo.Controllers
             return RedirectToAction("Index");
         }
 
+        //[Route("/Appointment/Select")]
         public ActionResult Select(int patientId, DateTime startDate, DateTime endDate)
         {
-            
-            return View(GetStoredProc(patientId, startDate, endDate));
+            //return View();
+            List<Appointment> list = GetStoredProc(patientId, startDate, endDate);
+            return View(list);
         }
-
 
 
         // Helper methods
@@ -150,13 +150,11 @@ namespace Demo.Controllers
                     cmd.Parameters.Add("@end_date", SqlDbType.Date).Value = endDate;
                     cmd.Parameters.Add("@patient_id", SqlDbType.Int).Value = patientId;
                     conn.Open();
-
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
                     DataSet ds = new DataSet();
                     adapter.Fill(ds);
-
                     conn.Close();
+
                     DataTable dt = ds.Tables[0];
                     List<Appointment> apps = new List<Appointment>();
                     foreach (DataRow row in dt.Rows)
@@ -172,8 +170,8 @@ namespace Demo.Controllers
                     return apps;
                 }
             }
-            List<Appointment> list = new List<Appointment>();
-            return list;
+            //List<Appointment> list = new List<Appointment>();
+            //return list;
         }
     }
 }
