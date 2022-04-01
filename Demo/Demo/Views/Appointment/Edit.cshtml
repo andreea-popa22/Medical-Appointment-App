@@ -3,12 +3,12 @@
 @{
     ViewBag.Title = "Edit";
 }
-
+<br />
 <h2 class="heading-font" style="margin-left:14rem; margin-bottom: 2rem;">Edit appointment</h2>
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <div class="panel panel-default radius-div edit-div">
+            <div class="panel panel-default radius-div edit-div" style="margin-left:15%; padding-left:4rem;">
                 <br />
                 @using (Html.BeginForm(actionName: "Edit", controllerName: "Appointment"))
                 {
@@ -45,9 +45,9 @@
             </div>
         </div>
         <div class="col-md-6">
-            <a class="btn btn-default" href="/Appointment/Show/@Model.AppointmentId">Back to appointment</a>
+            <a class="btn btn-default" href="/Appointment/Show/@Model.AppointmentId">Back to appointment details</a>
         </div>
     </div>
-
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 </div>
 

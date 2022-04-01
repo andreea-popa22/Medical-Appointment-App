@@ -3,12 +3,13 @@
 @{
     ViewBag.Title = "Edit";
 }
-
+<br />
 <h2 class="heading-font" style="margin-left:14rem; margin-bottom: 2rem;">Edit Patient</h2>
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <div class="panel panel-default radius-div edit-div">
+            <div class="panel panel-default radius-div edit-div" style="margin-left:15%; padding-left:4rem;">
+                <br />
                 @using (Html.BeginForm(actionName: "Edit", controllerName: "Patient"))
                 {
                     @Html.HttpMethodOverride(HttpVerbs.Put)
@@ -18,16 +19,16 @@
                     @Html.Label("Name", "Name")
                     <br />
                     @Html.Editor("Name")
-                    <br />
+                    <br /><br />
                     @Html.Label("Surname", "Surname")
                     <br />
                     @Html.Editor("Surname")
-                    <br />
+                    <br /><br />
                     @Html.Label("Gender", "Gender")
                     <br />
                     @Html.EditorFor(m => m.Gender)
                     @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
-                    <br />
+                    <br /><br />
                     @Html.Label("Date", "Date")
                     <br />
                     @Html.EditorFor(m => m.BirthDate)
@@ -43,5 +44,5 @@
             <a class="btn btn-default" href="/Patient/Show/@Model.PatientId">Back to patient details</a>
         </div>
     </div>
-
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 </div>
