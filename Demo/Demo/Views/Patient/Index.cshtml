@@ -1,58 +1,67 @@
 ﻿@model IEnumerable<Demo.Models.Patient>
 
-@{
-    ViewBag.Title = "Index";
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Patients</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" type="text/css" media="all" href="~/Content/site.css" />
+</head>
+<body>
 
-<h2>Patients</h2>
-<br />
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Surname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </th>
-        <th class="text-center">
-            @Html.Label("Actions")
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <h2>Patients</h2>
+    <br />
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Surname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
-            </td>
-            <td>
-                <a class="btn btn-primary pull-left" href="/Patient/Edit/@item.PatientId" style="margin-left:5px;">Edit</a>
-                <a class="btn btn-info pull-left" href="/Patient/Show/@item.PatientId" style="margin-left:5px;">Details</a>
-                <form method="post" action="/Patient/Delete/@item.PatientId">
-                    @Html.HttpMethodOverride(HttpVerbs.Delete)
-                    <button class="btn btn-danger pull-left" style="margin-left:5px;" type="submit">Delete</button>
-                </form>
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th class="text-center">
+                @Html.Label("Actions")
+            </th>
         </tr>
-    }
 
-</table>
-<br />
-<a class="btn btn-success" href="/Patient/New">Add patient</a>
-<br /><br />
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    <a class="btn btn-primary pull-left" href="/Patient/Edit/@item.PatientId" style="margin-left:5px;">Edit</a>
+                    <a class="btn btn-info pull-left" href="/Patient/Show/@item.PatientId" style="margin-left:5px;">Details</a>
+                    <form method="post" action="/Patient/Delete/@item.PatientId">
+                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                        <button class="btn btn-danger pull-left" style="margin-left:5px;" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
 
+    </table>
+    <br />
+    <a class="btn btn-success" href="/Patient/New">Add patient</a>
+    <br /><br />
+</body>
+</html>
