@@ -64,7 +64,14 @@
     <br />
     <div>
         <a class="btn btn-success" href="/Appointment/New">Add appointment</a>
-        <button class="btn btn-warning" onclick="exportApptFunction()" id="export-appt">Export appointments</button>
+        @*<button class="btn btn-warning" onclick="exportApptFunction()" id="export-appt">Export appointments</button>*@
+        @Ajax.ActionLink(
+        "Export Appointments",
+        "Export",
+        null,
+        new AjaxOptions { HttpMethod = "GET" },
+        new { @class = "btn btn-warning" }
+    )
     </div>
     <br /><br />
     <script src="../../Scripts/ExportAppt.js" language="javascript"></script>

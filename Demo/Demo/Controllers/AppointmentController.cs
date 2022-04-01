@@ -101,9 +101,8 @@ namespace Demo.Controllers
             return View(list);
         }
 
-        [NonAction]
-        [HttpPost]
-        public ActionResult Export()
+        [HttpGet]
+        public FileResult Export()
         {
             DataTable dt = new DataTable("Appointments");
             dt.Columns.AddRange(new DataColumn[5] { new DataColumn("AppointmentId"),
