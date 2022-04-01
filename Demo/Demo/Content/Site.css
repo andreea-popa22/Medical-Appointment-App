@@ -111,6 +111,11 @@ textarea {
     overflow-y: scroll;
 }
 
+.c2 {
+    padding-left:4rem; 
+    padding-right:0;
+}
+
 .btn-info2 {
     background-color: #6e56b0;
     border-color: #533b96;
