@@ -4,7 +4,7 @@
 function findApptFunction(patientId) {
     startDate = document.getElementById("start-date").value;
     endDate = document.getElementById("end-date").value;
-    console.log(findApptButton);
+    console.log(patientId);
     console.log(startDate);
     console.log(endDate);
     $.ajax({
@@ -16,7 +16,7 @@ function findApptFunction(patientId) {
         //contentType: "application/json; charset=utf-8",
         success: function (data) {
             console.log("success");
-            //window.location="../../Appointment/Select";
+            window.location.href = "../../Appointment/Select/" + patientId + "/" + startDate + "/" + endDate;
         },
         error: function (request, error) {
             alert("Request: " + JSON.stringify(request));
