@@ -198,14 +198,14 @@ namespace Demo.Controllers
                             Type = row["Type"].ToString(),
                             Date = Convert.ToDateTime(row["Date"].ToString()),
                             PatientId = Convert.ToInt32(row["PatientId"].ToString()),
-                            DoctorId = Convert.ToInt32(row["DoctorId"].ToString())
-                        });
+                            Patient = entities.Patients.Find(Convert.ToInt32(row["PatientId"].ToString())),
+                            DoctorId = Convert.ToInt32(row["DoctorId"].ToString()),
+                            Doctor = entities.Doctors.Find(Convert.ToInt32(row["DoctorId"].ToString()))
+                        }) ;
                     }
                     return apps;
                 }
             }
-            //List<Appointment> list = new List<Appointment>();
-            //return list;
         }
     }
 }
