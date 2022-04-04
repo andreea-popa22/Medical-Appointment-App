@@ -13,54 +13,56 @@
 <body>
     <h2>Appointments for selected patient</h2>
     <br />
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Type)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Date)
-                    </th>
-                    <th>
-                        @Html.Label("Patient")
-                    </th>
-                    <th>
-                        @Html.Label("Doctor")
-                    </th>
-                    <th class="text-center">
-                        @Html.Label("Actions")
-                    </th>
-                </tr>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.Label("Patient")
+            </th>
+            <th>
+                @Html.Label("Doctor")
+            </th>
+            <th class="text-center">
+                @Html.Label("Actions")
+            </th>
+        </tr>
 
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Type)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Date)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Patient.Name)
-                            @Html.DisplayFor(modelItem => item.Patient.Surname)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Doctor.Name)
-                            @Html.DisplayFor(modelItem => item.Doctor.Surname)
-                        </td>
-                        <td>
-                            <a class="btn btn-primary pull-left" href="/Appointment/Edit/@item.AppointmentId" style="margin-left:5px;">Edit</a>
-                            <a class="btn btn-info pull-left" href="/Appointment/Show/@item.AppointmentId" style="margin-left:5px;">Details</a>
-                            <form method="post" action="/Appointment/Delete/@item.AppointmentId">
-                                @Html.HttpMethodOverride(HttpVerbs.Delete)
-                                <button class="btn btn-danger pull-left" style="margin-left:5px;" type="submit">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patient.Name)
+                    @Html.DisplayFor(modelItem => item.Patient.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Doctor.Name)
+                    @Html.DisplayFor(modelItem => item.Doctor.Surname)
+                </td>
+                <td>
+                    <a class="btn btn-primary pull-left" href="/Appointment/Edit/@item.AppointmentId" style="margin-left:5px;">Edit</a>
+                    <a class="btn btn-info pull-left" href="/Appointment/Show/@item.AppointmentId" style="margin-left:5px;">Details</a>
+                    <form method="post" action="/Appointment/Delete/@item.AppointmentId">
+                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                        <button class="btn btn-danger pull-left" style="margin-left:5px;" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
 
-            </table>
-        <br />
+    </table>
+    <img src="../../../../Content/Images/app.jpg" alt="Take care" width="500" height="600" style="margin-left:25%;">
+
+    <br />
 </body>
 </html>
