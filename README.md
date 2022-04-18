@@ -4,6 +4,16 @@ This app was developed during my induction period for my Junior .Net Software De
 ### Summary:
 This projects manages medical appointments for pacients. The process is intended to be used by medical staff during telephonic conversations with patients.
 
+### Features developed:
+- local Microsoft SQL Server database 
+- CRUD operations for appointment, patient and doctor entities
+- basic UI design
+- export xml file with all appointments (ajax call)
+- find appointments for a specific patient between selected datetimes (using stored sql procedure and ajax call)
+- javascript button to scroll to the top of the page
+- entity framework integrated
+
+
 Resources:
 - https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-cs
 - https://www.c-sharpcorner.com/article/crud-operation-in-asp-net-mvc2/
