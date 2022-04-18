@@ -195,6 +195,7 @@ namespace Demo.Controllers
                     {
                         apps.Add(new Appointment
                         {
+                            AppointmentId = Convert.ToInt32(row["AppointmentId"].ToString()),
                             Type = row["Type"].ToString(),
                             Date = Convert.ToDateTime(row["Date"].ToString()),
                             PatientId = Convert.ToInt32(row["PatientId"].ToString()),
