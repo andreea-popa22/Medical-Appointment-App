@@ -8,10 +8,13 @@ This projects manages medical appointments for pacients. The process is intended
 - local Microsoft SQL Server database 
 - CRUD operations for appointment, patient and doctor entities
 - basic UI design
-- export xml file with all appointments (ajax call)
+- export excel file with all appointments (ajax call)
 - find appointments for a specific patient between selected datetimes (using stored sql procedure and ajax call)
-- javascript button to scroll to the top of the page
+- javascript footer button to scroll to the top of the page
 - entity framework integrated
+
+
+[App demo on youtube](https://youtu.be/8Bo4MykvxyE)
 
 
 Resources:
