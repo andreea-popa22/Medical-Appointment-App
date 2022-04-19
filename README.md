@@ -17,6 +17,9 @@ This projects manages medical appointments for pacients. The process is intended
 [App demo on youtube](https://youtu.be/8Bo4MykvxyE)
 
 
+*web.config not included for security purposes
+
+
 Resources:
 - https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-cs
 - https://www.c-sharpcorner.com/article/crud-operation-in-asp-net-mvc2/
