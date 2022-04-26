@@ -11,27 +11,51 @@ namespace DemoM.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private popaadbEntities entities = new popaadbEntities();
+        public ActionResult Index()
         {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
+            ViewBag.Doctors = ListDoctors();
+            ViewBag.Appointments = ListAppointments();
+            ViewBag.Patients = ListPatients();
             return View();
         }
 
-        public IActionResult Privacy()
+        public ActionResult About()
         {
+            ViewBag.Message = "Your application description page.";
+
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public ActionResult Contact()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        [NonAction]
+        public List<Patient> ListPatients()
+        {
+            var patients = from p in entities.Patients
+                           select p;
+            return patients.ToList();
+        }
+
+        [NonAction]
+        public List<Appointment> ListAppointments()
+        {
+            var apps = from a in entities.Appointments
+                       select a;
+            return apps.ToList();
+        }
+
+        [NonAction]
+        public List<Doctor> ListDoctors()
+        {
+            var doctors = from d in entities.Doctors
+                          select d;
+            return doctors.ToList();
         }
     }
 }

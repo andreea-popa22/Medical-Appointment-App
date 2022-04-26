@@ -13,6 +13,10 @@ namespace DemoM
     {
         public static void Main(string[] args)
         {
+            var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<MvcMovieContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("MvcMovieContext")));
             CreateHostBuilder(args).Build().Run();
         }
 
