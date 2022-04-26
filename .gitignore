@@ -74,4 +74,5 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 
-./Demo/Demo/Views/Patient/PacientInfo.cshtml
+Demo/Demo/Views/Patient/PacientInfo.cshtml
+Demo/Demo/Web.config
