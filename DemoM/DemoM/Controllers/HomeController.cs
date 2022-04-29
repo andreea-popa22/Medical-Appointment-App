@@ -1,4 +1,5 @@
-﻿using DemoM.Models;
+﻿using DemoM.Data;
+using DemoM.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,7 +12,7 @@ namespace DemoM.Controllers
 {
     public class HomeController : Controller
     {
-        private popaadbEntities entities = new popaadbEntities();
+        private PopaaDbContext entities = new PopaaDbContext();
         public ActionResult Index()
         {
             ViewBag.Doctors = ListDoctors();

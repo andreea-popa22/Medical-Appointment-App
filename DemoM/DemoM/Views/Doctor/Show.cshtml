@@ -1,0 +1,79 @@
+﻿@model DemoM.Models.Doctor
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - MedApp</title>
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+    <link rel="stylesheet" type="text/css" media="all" href="~/Content/site.css" />
+</head>
+<body>
+    <div>
+        <br />
+        <h3>Doctor Details</h3>
+        <br />
+        <table class="table">
+            <tr>
+                <td>
+                    @Html.Label("Name")
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.Name)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Surname")
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.Surname)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Gender")
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.Gender)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Specialization")
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.Specialization)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Experience")
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.Experience)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Medical Center")
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.MedicalCenter.Name)
+                </th>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-md-8 offset-md-2 pull-left">
+                <a class="btn btn-default" href="/Doctor/Index">Back to list</a>
+                <a class="btn btn-primary" href="/Doctor/Edit/@Model.DoctorId">Edit</a>
+                <a class="btn btn-danger" href="/Doctor/Delete/@Model.DoctorId">Delete</a>
+                <img src="../../Content/Images/doctors.jpg" alt="Take care" width="400" height="300" style="margin-left:50%;">
+            </div>
+        </div>
+    </div>
+    <br /><br />
+</body>
+</html>

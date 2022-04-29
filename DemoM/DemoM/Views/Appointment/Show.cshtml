@@ -1,0 +1,89 @@
+﻿@model DemoM.Models.Appointment
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - MedApp</title>
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+    <link rel="stylesheet" type="text/css" media="all" href="~/Content/site.css" />
+</head>
+<body>
+    <div>
+        <br />
+        <h3>Appointment Details</h3>
+        <br />
+        <table class="table">
+            <tr>
+                <td>
+                    @Html.Label("Type")
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.Type)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Date")
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.Date)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Patient")
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.Patient.Name)
+                    @Html.DisplayFor(model => model.Patient.Surname)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Doctor")
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.Doctor.Name)
+                    @Html.DisplayFor(model => model.Doctor.Surname)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Medical Center")
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.Doctor.MedicalCenter.Name)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Medical Center Address")
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.Doctor.MedicalCenter.Address)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Medical Center Contact")
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.Doctor.MedicalCenter.Contact)
+                </th>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-md-8 offset-md-2 pull-left">
+                <a class="btn btn-default" href="/Appointment/Index">Back to list</a>
+                <a class="btn btn-primary" href="/Appointment/Edit/@Model.AppointmentId">Edit</a>
+                <a class="btn btn-danger" href="/Appointment/Delete/@Model.AppointmentId">Delete</a>
+                <img src="../../Content/Images/medicine2.jpg" alt="Take care" width="400" height="300" style="margin-left:50%;">
+            </div>
+        </div>
+    </div>
+    <br /><br />
+</body>
+</html>

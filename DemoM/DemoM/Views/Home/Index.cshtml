@@ -1,8 +1,72 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - MedApp</title>
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+    <link rel="stylesheet" type="text/css" media="all" href="~/Content/site.css" />
+</head>
+<body>
+    <br />
+    <div class="container">
+        <h1 class="text-center mb-3">Dashboard</h1>
+        <br />
+        <div class="col-md-3 panel panel-default c1" style="background-color: #d5d3f2;">
+            <div class="text-center">
+                <br />
+                <a href="/Patient/Index" class="button-15">All patients &#8594;</a>
+            </div>
+            <div>
+                @foreach (DemoM.Models.Patient patient in ViewBag.Patients)
+                {
+                    <div class="font-poppins">
+                        @Html.Partial("ListPatients", patient)
+                    </div>
+                }
+                <br />
+            </div>
+        </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+        <div class="col-md-6 panel panel-default c1" style="background-color: #c8b8f2; ">
+            <div class="text-center">
+                <br />
+                <a href="/Appointment/Index" class="button-15">All appointments &#8594;</a>
+            </div>
+            <div>
+                @foreach (DemoM.Models.Appointment app in ViewBag.Appointments)
+                {
+                    <div class="font-poppins">
+                        @Html.Partial("ListAppointments", app)
+                    </div>
+                }
+                <br />
+            </div>
+
+        </div>
+
+        <div class="col-md-3 panel panel-default c1" style="background-color: #d5d3f2;">
+            <div class="text-center">
+                <br />
+                <a href="/Doctor/Index" class="button-15">All doctors &#8594;</a>
+            </div>
+            <div>
+                @foreach (DemoM.Models.Doctor doctor in ViewBag.Doctors)
+                {
+                    <div class="font-poppins">
+                        @Html.Partial("ListDoctors", doctor)
+                    </div>
+                }
+                <br />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <img src="../Content/Images/medicine.png" alt="Take care" width="400" height="300" style="margin-left: 50%;">
+        </div>
+    </div>
+    <br />
+</body>
+</html>

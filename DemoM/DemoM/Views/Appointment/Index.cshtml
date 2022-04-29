@@ -1,0 +1,93 @@
+﻿@model IEnumerable<DemoM.Models.Appointment>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Appointments</title>
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+    <link rel="stylesheet" type="text/css" media="all" href="~/Content/site.css" />
+</head>
+<body>
+    <h2>Appointments</h2>
+    <br />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.Label("Patient")
+            </th>
+            <th>
+                @Html.Label("Doctor")
+            </th>
+            <th class="text-center">
+                @Html.Label("Actions")
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patient.Name)
+                    @Html.DisplayFor(modelItem => item.Patient.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Doctor.Name)
+                    @Html.DisplayFor(modelItem => item.Doctor.Surname)
+                </td>
+                <td>
+                    <a class="btn btn-primary pull-left" href="/Appointment/Edit/@item.AppointmentId" style="margin-left:5px;">Edit</a>
+                    <a class="btn btn-info pull-left" href="/Appointment/Show/@item.AppointmentId" style="margin-left:5px;">Details</a>
+                    <form method="post" action="/Appointment/Delete/@item.AppointmentId">
+                        @*@Html.HttpMethodOverride(HttpVerbs.Delete)*@
+                        <button class="btn btn-danger pull-left" style="margin-left:5px;" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    <div>
+        <a class="btn btn-success" href="/Appointment/New">Add appointment</a>
+        @*@Ajax.ActionLink(
+            "Export Appointments",
+            "Export",
+            null,
+            new AjaxOptions { HttpMethod = "GET" },
+            new { @class = "btn btn-warning" }
+        )*@
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("Export")",
+                success: function (msg) {
+                    console.log(msg);
+                },
+                error: function (req, status, error) {
+                    console.log(msg);
+                }
+            });
+            });
+        </script>
+    </div>
+    <br /><br />
+    <script src="../../Scripts/ExportAppt.js" language="javascript"></script>
+</body>
+</html>

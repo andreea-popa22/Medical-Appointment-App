@@ -1,0 +1,62 @@
+﻿@model DemoM.Models.Appointment
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Edit Appointment</title>
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+    <link rel="stylesheet" type="text/css" media="all" href="~/Content/site.css" />
+</head>
+<body>
+    <br />
+    <h2 class="heading-font" style="margin-left:14rem; margin-bottom: 2rem;">Edit appointment</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default radius-div edit-div" style="margin-left:15%; padding-left:4rem;">
+                    <br />
+                    @using (Html.BeginForm(actionName: "Edit", controllerName: "AppointmentController"))
+                    {
+                        @*@Html.HttpMethodOverride(HttpVerbs.Put)*@
+
+                        @Html.HiddenFor(m => m.AppointmentId)
+
+                        @Html.Label("Type", "Type")
+                        <br />
+                        @Html.Editor("Type")
+                        <br />
+                        <br />
+                        @Html.Label("Date", "Date")
+                        <br />
+                        @Html.EditorFor(m => m.Date)
+                        @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
+                        <br />
+                        <br />
+                        <label>Select pacient</label>
+                        @Html.DropDownListFor(m => m.PatientId,
+                            new SelectList(Model.PatientsList, "Value", "Text"),
+                            "Select patient", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PatientId, "", new { @class = "text-danger" })
+                        <br />
+                        <label>Select doctor</label>
+                        @Html.DropDownListFor(m => m.DoctorId,
+                            new SelectList(Model.DoctorsList, "Value", "Text"),
+                            "Select doctor", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.DoctorId, "", new { @class = "text-danger" })
+                        <br />
+                        <button class="btn btn-sm btn-success" type="submit">Edit</button>
+                    }
+                    <br />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <a class="btn btn-default" href="/Appointment/Show/@Model.AppointmentId">Back to appointment details</a>
+            </div>
+        </div>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    </div>
+</body>
+</html>
