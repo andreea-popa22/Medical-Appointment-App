@@ -1,5 +1,4 @@
 ## ASP .Net MVC Medical Appointments Management App
-This app was developed during my induction period for my Junior .Net Software Developer position.
 
 ### Summary:
 This projects manages medical appointments for pacients. The process is intended to be used by medical staff during telephonic conversations with patients.
@@ -17,7 +16,9 @@ This projects manages medical appointments for pacients. The process is intended
 [App demo on youtube](https://youtu.be/8Bo4MykvxyE)
 
 
-*web.config not included for security purposes
+*web.config not included for security reasons.
+
+🔀 ASP.NET Core version of project can be found on secondary branch (migrated from the current one).
 
 
 Resources:
