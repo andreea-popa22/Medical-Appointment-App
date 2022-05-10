@@ -10,6 +10,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace DemoM
 {
@@ -28,7 +32,6 @@ namespace DemoM
             services.AddDbContext<PopaaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("popaadb")));
             services.AddControllersWithViews();
         }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -43,7 +46,20 @@ namespace DemoM
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+            Path.Combine(Directory.GetCurrentDirectory(), @"Images")),
+                RequestPath = new PathString("/StaticFiles")
+            });
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+            Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/css")),
+                RequestPath = new PathString("/StaticFilesCss")
+            });
 
             app.UseRouting();
 

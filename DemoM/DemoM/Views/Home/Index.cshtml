@@ -4,9 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - MedApp</title>
-    @*@Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")*@
-    <link rel="stylesheet" type="text/css" media="all" href="~/Content/site.css" />
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="~/wwwroot/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
 </head>
 <body>
     <br />
@@ -64,7 +71,7 @@
     </div>
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <img src="../Content/Images/medicine.png" alt="Take care" width="400" height="300" style="margin-left: 50%;">
+            <img src="~/StaticFiles/medicine.png" alt="Take care" width="400" height="300" style="margin-left: 50%;">
         </div>
     </div>
     <br />
