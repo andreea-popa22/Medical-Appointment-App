@@ -6,15 +6,27 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/css/bootstrap.min.css",
+    "outputFileName": "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
     "inputFiles": [
-      "wwwroot/css/bootstrap.css"
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.css"
     ]
   },
   {
     "outputFileName": "wwwroot/css/bootstrap-theme.min.css",
     "inputFiles": [
       "wwwroot/css/bootstrap-theme.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css"
     ]
   },
   {

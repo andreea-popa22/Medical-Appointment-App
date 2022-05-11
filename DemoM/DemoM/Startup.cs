@@ -51,15 +51,14 @@ namespace DemoM
             app.UseStaticFiles(new StaticFileOptions()
             {
                 FileProvider = new PhysicalFileProvider(
-            Path.Combine(Directory.GetCurrentDirectory(), @"Images")),
+            Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot")),
                 RequestPath = new PathString("/StaticFiles")
             });
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new PhysicalFileProvider(
-            Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/css")),
-                RequestPath = new PathString("/StaticFilesCss")
-            });
+            //app.UseFileServer(
+            //   new FileServerOptions()
+            //   {
+            //       FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"))
+            //   });
 
             app.UseRouting();
 

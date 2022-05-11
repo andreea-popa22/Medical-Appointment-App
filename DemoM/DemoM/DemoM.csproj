@@ -10,14 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\app.jpg" />
-    <Content Include="Images\doctors.jpg" />
-    <Content Include="Images\medicine.png" />
-    <Content Include="Images\medicine2.jpg" />
-    <Content Include="Images\patient.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\css\bootstrap-theme.css" />
     <None Include="wwwroot\css\bootstrap-theme.css.map" />
     <None Include="wwwroot\css\bootstrap-theme.min.css" />
@@ -26,6 +18,11 @@
     <None Include="wwwroot\css\bootstrap.css.map" />
     <None Include="wwwroot\css\bootstrap.min.css" />
     <None Include="wwwroot\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\Images\app.jpg" />
+    <None Include="wwwroot\Images\doctors.jpg" />
+    <None Include="wwwroot\Images\medicine.png" />
+    <None Include="wwwroot\Images\medicine2.jpg" />
+    <None Include="wwwroot\Images\patient.jpg" />
     <None Include="wwwroot\js\bootstrap.js" />
     <None Include="wwwroot\js\bootstrap.min.js" />
     <None Include="wwwroot\js\FindAppt.js" />

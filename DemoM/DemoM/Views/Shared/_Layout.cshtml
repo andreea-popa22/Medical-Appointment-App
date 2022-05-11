@@ -5,27 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - MedApp</title>
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/StaticFilesCss/site.css" />
+        <link rel="stylesheet" href="~/StaticFiles/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/StaticFiles/lib/bootstrap/dist/css/bootstrap-grid.css" />
+        <link rel="stylesheet" href="~/StaticFiles/lib/bootstrap/dist/css/bootstrap-reboot.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="~/StaticFiles/css/site.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+              asp-fallback-href="~/StaticFiles/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/StaticFiles/css/site.min.css" />
     </environment>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                @Html.ActionLink("MedApp", "Index", "Home", null, new { @class = "navbar-brand white-link" })
-            </div>
-            <div>
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Appointments", "Index", "Appointment", null, new { @class = "white-link" })</li>
-                    <li>@Html.ActionLink("Patients", "Index", "Patient", null, new { @class = "white-link" })</li>
-                    <li>@Html.ActionLink("Doctors", "Index", "Doctor", null, new { @class = "white-link" })</li>
+            <div class="navbar-nav">
+                <ul class="nav">
+                    <li>@Html.ActionLink("MedApp", "Index", "Home", null, new { @class = "navbar-brand white-link" })</li>
+                    <li>@Html.ActionLink("Appointments", "Index", "Appointment", null, new { @class = "navbar-brand white-link" })</li>
+                    <li>@Html.ActionLink("Patients", "Index", "Patient", null, new { @class = "navbar-brand white-link" })</li>
+                    <li>@Html.ActionLink("Doctors", "Index", "Doctor", null, new { @class = "navbar-brand white-link" })</li>
                 </ul>
             </div>
         </div>
@@ -44,9 +43,6 @@
         </footer>
     </div>
 
-    @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")*@
-    @*@RenderSection("scripts", required: false)*@
-    <script src="~/js/Layout.js" language="javascript"></script>
+    <script src="~/StaticFiles/js/Layout.js" language="javascript"></script>
 </body>
 </html>

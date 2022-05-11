@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - MedApp</title>
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="~/wwwroot/site.css" />
+        <link rel="stylesheet" href="~/StaticFiles/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/StaticFiles/lib/bootstrap/dist/css/bootstrap-grid.css" />
+        <link rel="stylesheet" href="~/StaticFiles/lib/bootstrap/dist/css/bootstrap-reboot.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="~/StaticFiles/css/site.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+              asp-fallback-href="~/StaticFiles/lib/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="~/StaticFiles/css/site.min.css" />
     </environment>
 </head>
 <body>
@@ -71,7 +72,7 @@
     </div>
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <img src="~/StaticFiles/medicine.png" alt="Take care" width="400" height="300" style="margin-left: 50%;">
+            <img src="~/StaticFiles/Images/medicine.png" alt="Take care" width="400" height="300" style="margin-left: 30%;">
         </div>
     </div>
     <br />
