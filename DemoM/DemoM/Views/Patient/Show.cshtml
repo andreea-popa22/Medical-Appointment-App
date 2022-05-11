@@ -6,8 +6,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - MedApp</title>
-    @*@Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")*@
     <link rel="stylesheet" type="text/css" media="all" href="~/Content/site.css" />
 </head>
 <body>
@@ -55,7 +53,7 @@
                 <a class="btn btn-primary" href="/Patient/Edit/@Model.PatientId">Edit</a>
                 <a class="btn btn-danger" href="/Patient/Delete/@Model.PatientId">Delete</a>
                 <br />
-                <img src="../../Content/Images/patient.jpg" alt="Take care" width="400" height="400" style="margin-left:45%;">
+                <img src="~/StaticFiles/Images/patient.jpg" alt="Take care" width="400" height="400" style="margin-left:45%;">
             </div>
             <div class="col-md-2 pull-right">
                 <label for="start-date">From:</label>
