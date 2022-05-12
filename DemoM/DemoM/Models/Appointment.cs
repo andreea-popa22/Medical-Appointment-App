@@ -13,13 +13,17 @@ namespace DemoM.Models
 
         [Required(ErrorMessage = "The appointment date is required!")]
         public System.DateTime Date { get; set; }
+        [ForeignKey("Patient")]
         public int PatientId { get; set; }
+        [ForeignKey("Doctor")]
         public int DoctorId { get; set; }
 
+        [NotMapped]
         public virtual Doctor Doctor { get; set; }
+        [NotMapped]
         public virtual Patient Patient { get; set; }
 
-        [NotMapped] 
+        [NotMapped]
         public IEnumerable<SelectListItem> PatientsList { get; set; }
         [NotMapped]
         public IEnumerable<SelectListItem> DoctorsList { get; set; }

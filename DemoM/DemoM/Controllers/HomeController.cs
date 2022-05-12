@@ -58,5 +58,33 @@ namespace DemoM.Controllers
                           select d;
             return doctors.ToList();
         }
+
+        [NonAction]
+        public Doctor GetDoctorById(int id)
+        {
+            Doctor doctor = entities.Doctors.Find(id);
+            return doctor;
+        }
+
+        [NonAction]
+        public Patient GetPatientById(int id)
+        {
+            Patient patient = entities.Patients.Find(id);
+            return patient;
+        }
+
+        [NonAction]
+        public Appointment GetAppointmentById(int id)
+        {
+            Appointment appointment = entities.Appointments.Find(id);
+            return appointment;
+        }
+
+        [NonAction]
+        public MedicalCenter GetMedicalCenterById(int id)
+        {
+            MedicalCenter medicalCenter = entities.MedicalCenters.Find(id);
+            return medicalCenter;
+        }
     }
 }

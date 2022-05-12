@@ -19,6 +19,7 @@ namespace DemoM.Models
         public Nullable<bool> Gender { get; set; }
         public string Specialization { get; set; }
         public Nullable<int> Experience { get; set; }
+        [ForeignKey("MedicalCenter")]
         public Nullable<int> MedicalCenterId { get; set; }
 
         [NotMapped]

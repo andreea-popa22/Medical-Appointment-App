@@ -26,6 +26,11 @@ namespace DemoM.Controllers
 
         public IActionResult Index()
         {
+            foreach (Appointment app in entities.Appointments)
+            {
+                app.Doctor = entities.Doctors.Find(app.AppointmentId);
+                app.Patient = entities.Patients.Find(app.PatientId);
+            }
             return View(entities.Appointments.ToList());
         }
 
