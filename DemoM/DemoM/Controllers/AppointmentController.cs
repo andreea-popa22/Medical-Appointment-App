@@ -30,7 +30,7 @@ namespace DemoM.Controllers
         {
             foreach (Appointment appointment in entities.Appointments)
             {
-                appointment.Doctor = entities.Doctors.Find(appointment.AppointmentId);
+                appointment.Doctor = entities.Doctors.Find(appointment.DoctorId);
                 appointment.Patient = entities.Patients.Find(appointment.PatientId);
                 appointment.Doctor.MedicalCenter = entities.MedicalCenters.Find(appointment.Doctor.MedicalCenterId);
                 appointment.Doctor.MedicalCenter.Address = entities.MedicalCenters.Find(appointment.Doctor.MedicalCenterId).Address;
@@ -313,7 +313,7 @@ namespace DemoM.Controllers
         [NonAction]
         public Appointment UpdateAppointmentDetails(Appointment appointment)
         {
-            appointment.Doctor = entities.Doctors.Find(appointment.AppointmentId);
+            appointment.Doctor = entities.Doctors.Find(appointment.DoctorId);
             appointment.Patient = entities.Patients.Find(appointment.PatientId);
             appointment.Doctor.MedicalCenter = entities.MedicalCenters.Find(appointment.Doctor.MedicalCenterId);
             appointment.Doctor.MedicalCenter.Address = entities.MedicalCenters.Find(appointment.Doctor.MedicalCenterId).Address;
