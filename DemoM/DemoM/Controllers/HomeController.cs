@@ -18,6 +18,7 @@ namespace DemoM.Controllers
             ViewBag.Doctors = ListDoctors();
             ViewBag.Appointments = ListAppointments();
             ViewBag.Patients = ListPatients();
+            ViewBag.MedicalCenters = ListMedicalCenters();
             return View();
         }
 
@@ -57,6 +58,14 @@ namespace DemoM.Controllers
             var doctors = from d in entities.Doctors
                           select d;
             return doctors.ToList();
+        }
+
+        [NonAction]
+        public List<MedicalCenter> ListMedicalCenters()
+        {
+            var medicalCenters = from d in entities.MedicalCenters
+                          select d;
+            return medicalCenters.ToList();
         }
 
         [NonAction]

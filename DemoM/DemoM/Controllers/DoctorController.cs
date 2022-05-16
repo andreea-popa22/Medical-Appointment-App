@@ -14,6 +14,12 @@ namespace Demo.Controllers
         private PopaaDbContext entities = new PopaaDbContext();
         public ActionResult Index()
         {
+            foreach( Doctor doctor in entities.Doctors)
+            {
+                doctor.MedicalCenter = entities.MedicalCenters.Find(doctor.MedicalCenterId);
+                doctor.MedicalCenter.Address = entities.MedicalCenters.Find(doctor.MedicalCenterId).Address;
+                doctor.MedicalCentersList = GetAllMedicalCenters();
+            }
             return View(entities.Doctors.ToList());
         }
 
@@ -21,13 +27,14 @@ namespace Demo.Controllers
         public ActionResult New()
         {
             Doctor doctor = new Doctor();
-            doctor.MedicalCentersList = GetAllMedicalCenters();
+            doctor = UpdateDoctorDetails(doctor);
             return View(doctor);
         }
 
         [HttpPost]
         public ActionResult New(Doctor doctor)
         {
+            doctor = UpdateDoctorDetails(doctor);
             entities.Doctors.Add(doctor);
             entities.SaveChanges();
             ViewBag.Message = "Doctor added successfully!";
@@ -38,6 +45,7 @@ namespace Demo.Controllers
         public ActionResult Show(int id)
         {
             var doctor = entities.Doctors.Find(id);
+            doctor = UpdateDoctorDetails(doctor);
             return View(doctor);
         }
 
@@ -45,12 +53,12 @@ namespace Demo.Controllers
         public ActionResult Edit(int id)
         {
             var doctor = entities.Doctors.Find(id);
-            doctor.MedicalCentersList = GetAllMedicalCenters();
+            doctor = UpdateDoctorDetails(doctor);
             return View(doctor);
         }
 
         [HttpPut]
-        public ActionResult Edit(int id, [FromBody] Doctor doctor)
+        public ActionResult Edit(int id, Doctor doctor)
         {
             try
             {
@@ -103,6 +111,15 @@ namespace Demo.Controllers
                 });
             }
             return medicalCentersList;
+        }
+
+        [NonAction]
+        public Doctor UpdateDoctorDetails(Doctor doctor)
+        {
+            doctor.MedicalCenter = entities.MedicalCenters.Find(doctor.MedicalCenterId);
+            doctor.MedicalCenter.Address = entities.MedicalCenters.Find(doctor.MedicalCenterId).Address;
+            doctor.MedicalCentersList = GetAllMedicalCenters();
+            return doctor;
         }
     }
 }

@@ -11,6 +11,8 @@ using System.IO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace DemoM.Controllers
 {
@@ -26,10 +28,14 @@ namespace DemoM.Controllers
 
         public IActionResult Index()
         {
-            foreach (Appointment app in entities.Appointments)
+            foreach (Appointment appointment in entities.Appointments)
             {
-                app.Doctor = entities.Doctors.Find(app.AppointmentId);
-                app.Patient = entities.Patients.Find(app.PatientId);
+                appointment.Doctor = entities.Doctors.Find(appointment.AppointmentId);
+                appointment.Patient = entities.Patients.Find(appointment.PatientId);
+                appointment.Doctor.MedicalCenter = entities.MedicalCenters.Find(appointment.Doctor.MedicalCenterId);
+                appointment.Doctor.MedicalCenter.Address = entities.MedicalCenters.Find(appointment.Doctor.MedicalCenterId).Address;
+                appointment.PatientsList = GetAllPatients();
+                appointment.DoctorsList = GetAllDoctors();
             }
             return View(entities.Appointments.ToList());
         }
@@ -38,14 +44,14 @@ namespace DemoM.Controllers
         public ActionResult New()
         {
             Appointment appointment = new Appointment();
-            appointment.PatientsList = GetAllPatients();
-            appointment.DoctorsList = GetAllDoctors();
+            appointment = UpdateAppointmentDetails(appointment);
             return View(appointment);
         }
 
         [HttpPost]
         public ActionResult New(Appointment appointment)
         {
+            appointment = UpdateAppointmentDetails(appointment);
             entities.Appointments.Add(appointment);
             entities.SaveChanges();
             ViewBag.Message = "Appointment created successfully!";
@@ -56,44 +62,108 @@ namespace DemoM.Controllers
         public ActionResult Show(int id)
         {
             var appointment = entities.Appointments.Find(id);
+            appointment = UpdateAppointmentDetails(appointment);
             return View(appointment);
         }
 
-        // EDIT
-        public IActionResult Edit(int id)
+        // EDIT GET
+        public async Task<IActionResult> Edit(int? id)
         {
-            var appointment = entities.Appointments.Find(id);
-            appointment.PatientsList = GetAllPatients();
-            appointment.DoctorsList = GetAllDoctors();
-            return View(appointment);
-        }
-
-        [HttpPut]
-        public ActionResult Edit(int id, Appointment appointment)
-        {
-            try
+            if (id == null)
             {
-                Appointment app = entities.Appointments.Find(id);
-                if (TryUpdateModel(app))
+                return NotFound();
+            }
+
+            var appointment = await entities.Appointments.FindAsync(id);
+            appointment = UpdateAppointmentDetails(appointment);
+            if (appointment == null)
+            {
+                return NotFound();
+            }
+            return View(appointment);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Appointment appointment)
+        {
+            if (id != appointment.AppointmentId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
                 {
-                    app.Type = appointment.Type;
-                    app.PatientId = appointment.PatientId;
-                    app.DoctorId = appointment.DoctorId;
-                    app.Patient = appointment.Patient;
-                    app.Doctor = appointment.Doctor;
-                    app.PatientsList = GetAllPatients();
-                    app.DoctorsList = GetAllDoctors();
-                    entities.SaveChanges();
-                    TempData["message"] = "Appointment edited!";
-                    return RedirectToAction("Index");
+                    Appointment app = entities.Appointments.Find(id);
+                    if (TryUpdateModel(app))
+                    {
+                        app.Type = appointment.Type;
+                        app.PatientId = appointment.PatientId;
+                        app.DoctorId = appointment.DoctorId;
+                        app.Patient = appointment.Patient;
+                        app.Doctor = appointment.Doctor;
+                        appointment.Doctor = entities.Doctors.Find(appointment.AppointmentId);
+                        appointment.Patient = entities.Patients.Find(appointment.PatientId);
+                        app.Doctor = appointment.Doctor;
+                        app.Patient = appointment.Patient;
+                        app.PatientsList = GetAllPatients();
+                        app.DoctorsList = GetAllDoctors();
+                        entities.SaveChanges();
+                        TempData["message"] = "Appointment edited!";
+                        entities.Appointments.Update(app);
+                        await entities.SaveChangesAsync();
+                        return RedirectToAction("Index");
+                    }
+                    return View(app);
                 }
-                return View(appointment);
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!AppointmentExists(appointment.AppointmentId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
             }
-            catch (Exception e)
-            {
-                return View(appointment);
-            }
+            return View(appointment);
         }
+
+        //[HttpPut]
+        //public IActionResult Edit(int id, Appointment appointment)
+        //{
+        //    try
+        //    {
+        //        Appointment app = entities.Appointments.Find(id);
+        //        if (TryUpdateModel(app))
+        //        {
+        //            app.Type = appointment.Type;
+        //            app.PatientId = appointment.PatientId;
+        //            app.DoctorId = appointment.DoctorId;
+        //            app.Patient = appointment.Patient;
+        //            app.Doctor = appointment.Doctor;
+        //            appointment.Doctor = entities.Doctors.Find(appointment.AppointmentId);
+        //            appointment.Patient = entities.Patients.Find(appointment.PatientId);
+        //            app.Doctor = appointment.Doctor;
+        //            app.Patient = appointment.Patient;
+        //            app.PatientsList = GetAllPatients();
+        //            app.DoctorsList = GetAllDoctors();
+        //            entities.SaveChanges();
+        //            TempData["message"] = "Appointment edited!";
+        //            return RedirectToAction("Index");
+        //        }
+        //        return View(appointment);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return View(appointment);
+        //    }
+        //}
 
         private bool TryUpdateModel(Appointment app)
         {
@@ -227,6 +297,29 @@ namespace DemoM.Controllers
                     return apps;
                 }
             }
+        }
+
+        [NonAction]
+        public bool AppointmentExists(int id)
+        {
+            var appointment = entities.Appointments.Find(id);
+            if (appointment != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        [NonAction]
+        public Appointment UpdateAppointmentDetails(Appointment appointment)
+        {
+            appointment.Doctor = entities.Doctors.Find(appointment.AppointmentId);
+            appointment.Patient = entities.Patients.Find(appointment.PatientId);
+            appointment.Doctor.MedicalCenter = entities.MedicalCenters.Find(appointment.Doctor.MedicalCenterId);
+            appointment.Doctor.MedicalCenter.Address = entities.MedicalCenters.Find(appointment.Doctor.MedicalCenterId).Address;
+            appointment.PatientsList = GetAllPatients();
+            appointment.DoctorsList = GetAllDoctors();
+            return appointment;
         }
     }
 }

@@ -40,12 +40,12 @@ namespace DemoM.Data
             }
         }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Doctor>().ToTable("popaadb.Doctor");
-        //    modelBuilder.Entity<Patient>().ToTable("popaadb.dbo.Patient");
-        //    modelBuilder.Entity<Appointment>().ToTable("popaadb.dbo.Appointment");
-        //    modelBuilder.Entity<MedicalCenter>().ToTable("popaadb.dbo.MedicalCenter");
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Doctor>().ToTable("Doctor");
+            modelBuilder.Entity<Patient>().ToTable("Patient");
+            modelBuilder.Entity<Appointment>().ToTable("Appointment");
+            modelBuilder.Entity<MedicalCenter>().ToTable("MedicalCenter");
+        }
     }
 }
