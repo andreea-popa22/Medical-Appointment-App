@@ -16,10 +16,8 @@
             <div class="col-md-6">
                 <div class="panel panel-default radius-div edit-div" style="margin-left:15%; padding-left:4rem;">
                     <br />
-                    @using (Html.BeginForm(actionName: "Edit", controllerName: "AppointmentController"))
+                    @using (Html.BeginForm(actionName: "Edit", controllerName: "Appointment"))
                     {
-                        @*@Html.HttpMethodOverride(HttpVerbs.Put)*@
-
                         @Html.HiddenFor(m => m.AppointmentId)
 
                         @Html.Label("Type", "Type")

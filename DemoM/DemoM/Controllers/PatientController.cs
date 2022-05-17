@@ -46,12 +46,12 @@ namespace Demo.Controllers
             return View(patient);
         }
 
-        [HttpPut]
-        public ActionResult Edit(int id, [FromBody] Patient patient)
+        [HttpPost]
+        public ActionResult Edit(int patientId, Patient patient)
         {
             try
             {
-                Patient pt = entities.Patients.Find(id);
+                Patient pt = entities.Patients.Find(patientId);
                 if (ModelState.IsValid)
                 {
                     pt.Name = patient.Name;

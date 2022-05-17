@@ -66,104 +66,40 @@ namespace DemoM.Controllers
             return View(appointment);
         }
 
-        // EDIT GET
-        public async Task<IActionResult> Edit(int? id)
+         // EDIT
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var appointment = await entities.Appointments.FindAsync(id);
+            var appointment = entities.Appointments.Find(id);
             appointment = UpdateAppointmentDetails(appointment);
-            if (appointment == null)
-            {
-                return NotFound();
-            }
             return View(appointment);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Appointment appointment)
+        public ActionResult Edit(int id, Appointment appointment)
         {
-            if (id != appointment.AppointmentId)
+            try
             {
-                return NotFound();
+                Appointment app = entities.Appointments.Find(id);
+                if (ModelState.IsValid)
+                {
+                    app.Type = appointment.Type;
+                    app.PatientId = appointment.PatientId;
+                    app.DoctorId = appointment.DoctorId;
+                    app.Patient = appointment.Patient;
+                    app.Doctor = appointment.Doctor;
+                    app.PatientsList = GetAllPatients();
+                    app.DoctorsList = GetAllDoctors();
+                    entities.SaveChanges();
+                    TempData["message"] = "Appointment edited!";
+                    return RedirectToAction("Index");
+                }
+                return View(appointment);
             }
-
-            if (ModelState.IsValid)
+            catch (Exception e)
             {
-                try
-                {
-                    Appointment app = entities.Appointments.Find(id);
-                    if (TryUpdateModel(app))
-                    {
-                        app.Type = appointment.Type;
-                        app.PatientId = appointment.PatientId;
-                        app.DoctorId = appointment.DoctorId;
-                        app.Patient = appointment.Patient;
-                        app.Doctor = appointment.Doctor;
-                        appointment.Doctor = entities.Doctors.Find(appointment.AppointmentId);
-                        appointment.Patient = entities.Patients.Find(appointment.PatientId);
-                        app.Doctor = appointment.Doctor;
-                        app.Patient = appointment.Patient;
-                        app.PatientsList = GetAllPatients();
-                        app.DoctorsList = GetAllDoctors();
-                        entities.SaveChanges();
-                        TempData["message"] = "Appointment edited!";
-                        entities.Appointments.Update(app);
-                        await entities.SaveChangesAsync();
-                        return RedirectToAction("Index");
-                    }
-                    return View(app);
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AppointmentExists(appointment.AppointmentId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                return View(appointment);
             }
-            return View(appointment);
         }
-
-        //[HttpPut]
-        //public IActionResult Edit(int id, Appointment appointment)
-        //{
-        //    try
-        //    {
-        //        Appointment app = entities.Appointments.Find(id);
-        //        if (TryUpdateModel(app))
-        //        {
-        //            app.Type = appointment.Type;
-        //            app.PatientId = appointment.PatientId;
-        //            app.DoctorId = appointment.DoctorId;
-        //            app.Patient = appointment.Patient;
-        //            app.Doctor = appointment.Doctor;
-        //            appointment.Doctor = entities.Doctors.Find(appointment.AppointmentId);
-        //            appointment.Patient = entities.Patients.Find(appointment.PatientId);
-        //            app.Doctor = appointment.Doctor;
-        //            app.Patient = appointment.Patient;
-        //            app.PatientsList = GetAllPatients();
-        //            app.DoctorsList = GetAllDoctors();
-        //            entities.SaveChanges();
-        //            TempData["message"] = "Appointment edited!";
-        //            return RedirectToAction("Index");
-        //        }
-        //        return View(appointment);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return View(appointment);
-        //    }
-        //}
 
         private bool TryUpdateModel(Appointment app)
         {
@@ -184,7 +120,6 @@ namespace DemoM.Controllers
         //[Route("/Appointment/Select")]
         public ActionResult Select(int patientId, DateTime startDate, DateTime endDate)
         {
-            //return View();
             List<Appointment> list = GetStoredProc(patientId, startDate, endDate);
             return View(list);
         }
@@ -260,9 +195,7 @@ namespace DemoM.Controllers
         [NonAction]
         public List<Appointment> GetStoredProc(int patientId, DateTime startDate, DateTime endDate)
         {
-            //services.AddDbContext<PopaaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("popaadb")));
             string connString = _configuration.GetValue<string>("ConnectionsStrings:popaadb");
-            //var connString = Configuration.GetConnectionString("popaadb");
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 using (SqlCommand cmd = new SqlCommand())

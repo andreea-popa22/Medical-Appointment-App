@@ -57,7 +57,7 @@ namespace Demo.Controllers
             return View(doctor);
         }
 
-        [HttpPut]
+        [HttpPost]
         public ActionResult Edit(int id, Doctor doctor)
         {
             try
