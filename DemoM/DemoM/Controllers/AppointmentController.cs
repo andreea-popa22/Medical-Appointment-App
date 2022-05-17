@@ -44,7 +44,8 @@ namespace DemoM.Controllers
         public ActionResult New()
         {
             Appointment appointment = new Appointment();
-            appointment = UpdateAppointmentDetails(appointment);
+            appointment.DoctorsList = GetAllDoctors();
+            appointment.PatientsList = GetAllPatients();
             return View(appointment);
         }
 
@@ -107,7 +108,6 @@ namespace DemoM.Controllers
         }
 
         // DELETE
-        [HttpDelete]
         public ActionResult Delete(int id)
         {
             Appointment appointment = entities.Appointments.Find(id);

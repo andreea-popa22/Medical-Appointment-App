@@ -27,7 +27,7 @@ namespace Demo.Controllers
         public ActionResult New()
         {
             Doctor doctor = new Doctor();
-            doctor = UpdateDoctorDetails(doctor);
+            doctor.MedicalCentersList = GetAllMedicalCenters();
             return View(doctor);
         }
 
@@ -85,7 +85,6 @@ namespace Demo.Controllers
         }
 
         // DELETE
-        [HttpDelete]
         public ActionResult Delete(int id)
         {
             Doctor doctor = entities.Doctors.Find(id);

@@ -71,7 +71,6 @@ namespace Demo.Controllers
         }
 
         // DELETE
-        [HttpDelete]
         public ActionResult Delete(int id)
         {
             Patient patient = entities.Patients.Find(id);
