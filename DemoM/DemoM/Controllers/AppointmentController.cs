@@ -195,7 +195,7 @@ namespace DemoM.Controllers
         [NonAction]
         public List<Appointment> GetStoredProc(int patientId, DateTime startDate, DateTime endDate)
         {
-            string connString = _configuration.GetValue<string>("ConnectionsStrings:popaadb");
+            string connString = _configuration.GetConnectionString("popaadb");
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 using (SqlCommand cmd = new SqlCommand())

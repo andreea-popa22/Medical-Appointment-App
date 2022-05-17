@@ -70,6 +70,15 @@ namespace DemoM
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "Appointment",
+                    pattern: "Appointment/{action}/{patientId}/{startDate}/{endDate}",
+                    new { controller = "Appointment", action = "Select", patientId = 1, startDate = "01/01/1999", endDate = "03/03/2022" }
+            );
+            });
         }
     }
 }
