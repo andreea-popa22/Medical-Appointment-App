@@ -84,6 +84,7 @@ namespace DemoM.Controllers
                 if (ModelState.IsValid)
                 {
                     app.Type = appointment.Type;
+                    app.Date = appointment.Date;
                     app.PatientId = appointment.PatientId;
                     app.DoctorId = appointment.DoctorId;
                     app.Patient = appointment.Patient;
