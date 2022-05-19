@@ -128,7 +128,7 @@ namespace DemoM.Controllers
         [HttpGet]
         public FileResult Export()
         {
-            DataTable dt = new DataTable("Appointments");
+            DataTable dt = new DataTable("Appointment");
             dt.Columns.AddRange(new DataColumn[5] { new DataColumn("AppointmentId"),
                                                     new DataColumn("Type"),
                                                     new DataColumn("Date"),
@@ -138,8 +138,9 @@ namespace DemoM.Controllers
             var appointments = from appointment in entities.Appointments
                                select appointment;
 
-            foreach (var appointment in appointments)
+            foreach (Appointment app in appointments)
             {
+                Appointment appointment = UpdateAppointmentDetails(app);
                 dt.Rows.Add(appointment.AppointmentId, appointment.Type, appointment.Date,
                     appointment.Patient.Name + " " + appointment.Patient.Surname,
                     appointment.Doctor.Name + " " + appointment.Doctor.Surname);

@@ -69,7 +69,12 @@
             new AjaxOptions { HttpMethod = "GET" },
             new { @class = "btn btn-warning" }
         )*@
-        <script type="text/javascript">
+        <a data-ajax="true"
+           href='@Url.Action("Export")'
+           class="btn btn-warning">
+            Export Appointments
+        </a>
+        @*<script type="text/javascript">
             $(document).ready(function () {
 
             $.ajax({
@@ -83,7 +88,7 @@
                 }
             });
             });
-        </script>
+        </script>*@
     </div>
     <br /><br />
     <script src="../../Scripts/ExportAppt.js" language="javascript"></script>
